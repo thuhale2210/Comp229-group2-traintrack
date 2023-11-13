@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const CustomerController = require('../controllers/index.customer.controller');
+const AccountController = require('../controllers/index.account.controller');
 
-const customerController = new CustomerController();
+const accountController = new AccountController();
 
-router.route('/add').post((req, res) => {
-    customerController.addCustomer(req, res);
+router.route('/addAccount').post((req, res) => {
+    accountController.addAccount(req, res);
 });
 
 module.exports = router;

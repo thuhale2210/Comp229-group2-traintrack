@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let Customer = new Schema({ 
+let Trainer = new Schema({ 
     firstName: {
         type:String
     },
@@ -20,4 +20,4 @@ let Customer = new Schema({
 });
 
 
-module.exports = mongoose.model('Customer',Customer);
+module.exports = mongoose.model('Trainer',Trainer);

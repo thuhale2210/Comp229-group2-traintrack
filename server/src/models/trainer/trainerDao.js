@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
-const Customer = require('./customer');
+const Trainer = require('./trainer');
 
-class CustomerDao{
+class TrainerDao{
 
     constructor(){
         mongoose.connect('mongodb+srv://alexrosario:7gXEavt2BAugFGJ8@cluster0.y3audej.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp',
@@ -21,7 +21,7 @@ class CustomerDao{
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create a new user
-        const newCustomer = new Customer({
+        const newTrainer = new Trainer({
             firstName,
             lastName,
             email,
@@ -30,10 +30,10 @@ class CustomerDao{
         });
 
         //Save the user
-        newCustomer.save(req.body)
-        .then(products => res.status(200).json(products))
+        newTrainer.save(req.body)
+        .then(trainers => res.status(200).json(trainers))
         .catch(err => res.status(400).json({"error":err}));
     }
 }
 
-module.exports = CustomerDao;
+module.exports = TrainerDao;
