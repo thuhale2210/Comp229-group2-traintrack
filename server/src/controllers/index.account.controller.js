@@ -8,6 +8,10 @@ class AccountController {
     addAccount(req, res){
         this.accountService.createAccount(req, res);
     }
+
+    login(req, res){
+        this.accountService.login(req, res);
+    }
 }
 
 module.exports = AccountController;

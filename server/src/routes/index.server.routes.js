@@ -8,4 +8,8 @@ router.route('/addAccount').post((req, res) => {
     accountController.addAccount(req, res);
 });
 
+router.route('/login').post((req, res) => {
+    accountController.login(req, res);
+});
+
 module.exports = router;

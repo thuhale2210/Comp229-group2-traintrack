@@ -1,7 +1,4 @@
-//Create a service to create an account
-//If the account's role is customer, it must create a new customer through the cutomerDao
-//If the account's role is trainer, it must create a new trainer through the trainerDao
-
+const bcrypt = require('bcrypt');
 const CustomerDao = require('../customer/customerDao');
 const TrainerDao = require('../trainer/trainerDao');
 const Customer = require('../customer/customer');
@@ -35,6 +32,51 @@ class AccountService{
                 return res.status(400).json({ message: 'Role is invalid' });
             }
 
+        }catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Internal Server Error' });
+        }
+    }
+
+    async login(req, res){
+        try{
+            const {email, password} = req.body;
+
+            // Check if email exists
+            const customer = await Customer.findOne({ email });
+            const trainer = await Trainer.findOne({ email });
+
+            if (!customer && !trainer){
+                return res.status(400).json({ message: 'Invalid username or password' });
+            }
+
+            // Check password
+            if(customer){
+                const customerValidPassword = await bcrypt.compare(password, customer.password);
+
+                //If password is valid, set session
+                if(customerValidPassword){
+                    return res.json({ userId: customer.id});
+                }
+                //Otherwise, send error message
+                else{
+                    return res.status(400).json({ message: 'Invalid username or password' });
+                }   
+            }
+            
+            if(trainer){
+                const trainerValidPassword = await bcrypt.compare(password, trainer.password);
+
+                //If password is valid, set session
+                if(trainerValidPassword){
+                    return res.json({ userId: trainer.id});
+                }
+                //Otherwise, send error message
+                else{
+                    return res.status(400).json({ message: 'Invalid username or password' });
+                } 
+            }
+            
         }catch (error) {
             console.error(error);
             res.status(500).json({ message: 'Internal Server Error' });
