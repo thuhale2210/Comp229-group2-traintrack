@@ -1,6 +1,6 @@
 import React from "react";
 import * as yup from "yup";
-import { Formik, ErrorMessage } from 'formik'
+import { Formik, ErrorMessage, Form, Field } from 'formik'
 import * as Components from "./components";
 
 const Login = () => {
@@ -26,64 +26,84 @@ const Login = () => {
         userType: yup.boolean().required().oneOf(["Customer", "Trainer"], 'Selecting user type is required')
     })
 
-    const onSubmit = (values, props) => {
-        console.log(values)
-        console.log(props)
+    const onSubmit = (values, { resetForm, setSubmitting }) => {
+        console.log(values);
         setTimeout(() => {
-            props.resetForm()
-            props.setSubmitting(false)
-        }, 2000)
-    }
+            resetForm();
+            setSubmitting(false);
+        }, 2000);
+    };
 
     return (
         <Components.Container>
             <Components.SignUpContainer signingIn={signIn}>
-                <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+                <Formik
+                    initialValues={initialValues}
+                    validationSchema={validationSchema}
+                    onSubmit={onSubmit}
+                >
                     {(props) => (
-                        <Components.Form>
-                            <Components.Heading3>Create Account</Components.Heading3>
-                            <Components.Input type="text" placeholder="Enter your First Name" helperText={<ErrorMessage name='name'/>}/>
-                            <Components.Input type="text" placeholder="Enter your Last Name" />
-                            <div className="row">
-                                <div className="col-auto">
-                                    <Components.Paragraph2>Your gender</Components.Paragraph2>
+                        <Form>
+                            <Components.Form>
+                                <Components.Heading3>Create Account</Components.Heading3>
+                                <Field as={Components.Input} type="text" name="firstName" placeholder="Enter your First Name" />
+                                <ErrorMessage className="text-red-500 text-xs" name="firstName" component="div" />
+                                <Field as={Components.Input} type="text" name="lastName" placeholder="Enter your Last Name" />
+                                <ErrorMessage className="text-red-500 text-xs" name="lastName" component="div" />
+                                <div className="row">
+                                    <div className="col-auto">
+                                        <Field as={Components.Paragraph2}>Gender</Field>
+                                    </div>
+                                    <div className="col-auto">
+                                        <Components.Input type="radio" name="gender" value="Male" id="male" checked="checked" />
+                                        <Components.Label htmlFor="male">Male</Components.Label>
+                                    </div>
+                                    <div className="col-auto">
+                                        <Components.Input type="radio" name="gender" value="Female" id="female" />
+                                        <Components.Label htmlFor="female">Female</Components.Label>
+                                    </div>
                                 </div>
-                                <div className="col-auto">
-                                    <Components.Input type="radio" name="gender" value="Male" id="male" />
-                                    <Components.Label htmlFor="male">Male</Components.Label>
+                                <ErrorMessage className="text-red-500 text-xs" name="gender" component="div" />
+                                <Field as={Components.Input} type="email" name="email" placeholder="Email" />
+                                <ErrorMessage className="text-red-500 text-xs" name="email" component="div" />
+                                <Field as={Components.Input} type="password" name="password" placeholder="Password" />
+                                <ErrorMessage className="text-red-500 text-xs" name="password" component="div" />
+                                <Field as={Components.Input} type="password" name="confirmPassword" placeholder="Confirm your password" />
+                                <ErrorMessage className="text-red-500 text-xs" name="confirmPassword" component="div" />
+                                <div className="row">
+                                    <div className="col-auto">
+                                        <Components.Input type="radio" name='userType' value="Customer" id="Customer" checked="checked" />
+                                        <Components.Label htmlFor="userType">Customer</Components.Label>
+                                    </div>
+                                    <div className="col-auto">
+                                        <Components.Input type="radio" name='userType' value="Trainer" id="Trainer" />
+                                        <Components.Label htmlFor="userType">Personal Trainer</Components.Label>
+                                    </div>
                                 </div>
-                                <div className="col-auto">
-                                    <Components.Input type="radio" name="gender" value="Female" id="female" />
-                                    <Components.Label htmlFor="female">Female</Components.Label>
-                                </div>
-
-                            </div>
-                            <Components.Input type="email" placeholder="Email" />
-                            <Components.Input type="password" placeholder="Password" />
-                            <Components.Input type="password" placeholder="Confirm your password" />
-                            <div className="row">
-                                <div className="col-auto">
-                                    <Components.Input type="radio" name='userType' value="Customer" id="Customer" />
-                                    <Components.Label htmlFor="userType">Customer</Components.Label>
-                                </div>
-                                <div className="col-auto">
-                                    <Components.Input type="radio" name='userType' value="Trainer" id="Trainer" />
-                                    <Components.Label htmlFor="userType">Personal Trainer</Components.Label>
-                                </div>
-                            </div>
-                            <Components.Button>Sign Up</Components.Button>
-                        </Components.Form>
+                                <ErrorMessage className="text-red-500 text-xs" name="userType" component="div" />
+                                <Components.Button type='submit' disabled={props.isSubmitting}>
+                                    {props.isSubmitting ? "Loading" : "Sign up"}
+                                </Components.Button>
+                            </Components.Form>
+                        </Form>
                     )}
                 </Formik>
             </Components.SignUpContainer>
             <Components.SignInContainer signingIn={signIn}>
-                <Components.Form>
-                    <Components.Title>Sign in</Components.Title>
-                    <Components.Input type="email" placeholder="Enter your email" />
-                    <Components.Input type="password" placeholder="Enter your password" />
-                    <Components.Anchor href="#">Forgot your password?</Components.Anchor>
-                    <Components.Button>Sign In</Components.Button>
-                </Components.Form>
+                <Formik
+                    initialValues={initialValues}
+                    validationSchema={validationSchema}
+                    onSubmit={onSubmit}>
+                    <Components.Form>
+                        <Components.Title>Sign in</Components.Title>
+                        <Field as={Components.Input} type="email" name="email" placeholder="Enter your email" />
+                        <ErrorMessage className="text-red-500 text-xs" name="email" component="div" />
+                        <Field as={Components.Input} type="password" name="password" placeholder="Enter your password" />
+                        <ErrorMessage className="text-red-500 text-xs" name="password" component="div" />
+                        <Components.Anchor href="#">Forgot your password?</Components.Anchor>
+                        <Components.Button type='submit' >Sign In</Components.Button>
+                    </Components.Form>
+                </Formik>
             </Components.SignInContainer>
             <Components.OverlayContainer signingIn={signIn}>
                 <Components.Overlay signingIn={signIn}>
