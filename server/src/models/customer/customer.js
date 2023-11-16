@@ -8,6 +8,9 @@ let Customer = new Schema({
     lastName:{
         type:String
     },
+    gender:{
+        type:String
+    },
     email:{
         type:String
     },

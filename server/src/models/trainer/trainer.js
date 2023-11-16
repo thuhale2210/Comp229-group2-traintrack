@@ -8,6 +8,9 @@ let Trainer = new Schema({
     lastName:{
         type:String
     },
+    gender:{
+        type:String
+    },
     email:{
         type:String
     },

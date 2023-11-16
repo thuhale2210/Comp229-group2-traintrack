@@ -11,7 +11,7 @@ class AccountService{
     }
 
     async createAccount(req, res){
-        const {firstName, lastName, email, password, role} = req.body;
+        const {firstName, lastName, gender, email, password, role} = req.body;
         try{
             // Check if user with the same email already exists
 

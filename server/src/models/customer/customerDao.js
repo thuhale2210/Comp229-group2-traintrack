@@ -15,7 +15,7 @@ class CustomerDao{
     }
 
     async create(req, res){
-        const { firstName, lastName, email, password, role } = req.body;
+        const { firstName, lastName, gender, email, password, role } = req.body;
 
         // Hash the password before saving it
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -24,6 +24,7 @@ class CustomerDao{
         const newCustomer = new Customer({
             firstName,
             lastName,
+            gender,
             email,
             password: hashedPassword,
             role,

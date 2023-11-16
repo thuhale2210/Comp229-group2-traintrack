@@ -15,7 +15,7 @@ class TrainerDao{
     }
 
     async create(req, res){
-        const { firstName, lastName, email, password, role } = req.body;
+        const { firstName, lastName, gender, email, password, role } = req.body;
 
         // Hash the password before saving it
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -24,6 +24,7 @@ class TrainerDao{
         const newTrainer = new Trainer({
             firstName,
             lastName,
+            gender,
             email,
             password: hashedPassword,
             role,
@@ -31,6 +32,12 @@ class TrainerDao{
 
         //Save the user
         newTrainer.save(req.body)
+        .then(trainers => res.status(200).json(trainers))
+        .catch(err => res.status(400).json({"error":err}));
+    }
+
+    async removeAll(req, res){
+        Trainer.deleteMany()
         .then(trainers => res.status(200).json(trainers))
         .catch(err => res.status(400).json({"error":err}));
     }
