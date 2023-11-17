@@ -40,7 +40,7 @@ const Login = () => {
             userType: this.state.userType
         }
 
-        axios.post('http://localhost:8081/login', newUser)
+        axios.post('http://localhost:3000/login', newUser)
             .then(res => console.log(res.data))
             .catch(err => console.log(err));
 
