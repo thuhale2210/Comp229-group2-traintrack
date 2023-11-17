@@ -2,6 +2,7 @@ import React from "react";
 import * as yup from "yup";
 import { Formik, ErrorMessage, Form, Field } from 'formik'
 import * as Components from "./components";
+import axios from 'axios';
 
 const Login = () => {
     const [signIn, toggle] = React.useState(true);
@@ -26,13 +27,39 @@ const Login = () => {
         userType: yup.boolean().required().oneOf(["Customer", "Trainer"], 'Selecting user type is required')
     })
 
-    const onSubmit = (values, { resetForm, setSubmitting }) => {
-        console.log(values);
-        setTimeout(() => {
-            resetForm();
-            setSubmitting(false);
-        }, 2000);
-    };
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const newUser = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            gender: this.state.gender,
+            email: this.state.email,
+            password: this.state.password,
+            confirmPassword: this.state.confirmPassword,
+            userType: this.state.userType
+        }
+
+        axios.post('http://localhost:8081/login', newUser)
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err));
+
+
+        this.setState({
+            description: '',
+            responsible: '',
+            priority: '',
+            isComplited: false
+        })
+    }
+
+    // const onSubmit = (values, { resetForm, setSubmitting }) => {
+    //     console.log(values);
+    //     setTimeout(() => {
+    //         resetForm();
+    //         setSubmitting(false);
+    //     }, 2000);
+    // };
 
     return (
         <Components.Container>
