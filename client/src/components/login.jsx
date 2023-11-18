@@ -77,7 +77,7 @@ const Login = () => {
                                 <ErrorMessage className="text-red-500 text-xs" name="firstName" component="div" />
                                 <Field as={Components.Input} type="text" name="lastName" placeholder="Enter your Last Name" />
                                 <ErrorMessage className="text-red-500 text-xs" name="lastName" component="div" />
-                                <div className="row">
+                                <div className="flex items-center justify-items-stretch">
                                     <div className="col-auto">
                                         <Field as={Components.Paragraph2}>Gender</Field>
                                     </div>
@@ -90,6 +90,7 @@ const Login = () => {
                                         <Components.Label htmlFor="female">Female</Components.Label>
                                     </div>
                                 </div>
+
                                 <ErrorMessage className="text-red-500 text-xs" name="gender" component="div" />
                                 <Field as={Components.Input} type="email" name="email" placeholder="Email" />
                                 <ErrorMessage className="text-red-500 text-xs" name="email" component="div" />
@@ -97,7 +98,7 @@ const Login = () => {
                                 <ErrorMessage className="text-red-500 text-xs" name="password" component="div" />
                                 <Field as={Components.Input} type="password" name="confirmPassword" placeholder="Confirm your password" />
                                 <ErrorMessage className="text-red-500 text-xs" name="confirmPassword" component="div" />
-                                <div className="row">
+                                <div className="flex items-center left-0">
                                     <div className="col-auto">
                                         <Components.Input type="radio" name='userType' value="Customer" id="Customer" checked="checked" />
                                         <Components.Label htmlFor="userType">Customer</Components.Label>
