@@ -1,6 +1,6 @@
 import React from 'react'
-import NavBar from './navbar'
-import BookAppointment from './bookappointment'
+import NavBar from '../customerNavBar'
+import BookAppointment from '../customerHomePage/bookAppointment'
 
 const CustomerHome = () => {
   return (
