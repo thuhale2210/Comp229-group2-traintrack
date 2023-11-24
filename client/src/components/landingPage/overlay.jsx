@@ -14,9 +14,7 @@ const Overlay = ({ signIn, toggle }) => {
                     <Components.Paragraph>
                         Enter your personal details and start journey with us
                     </Components.Paragraph>
-                    <Components.GhostButton onClick={() => toggle(false)}>
-                        Sign Up
-                    </Components.GhostButton>
+                    <Components.GhostButton onClick={() => toggle(false)}>Sign Up</Components.GhostButton>
                 </Components.RightOverlayPanel>
             </Components.Overlay>
         </Components.OverlayContainer>

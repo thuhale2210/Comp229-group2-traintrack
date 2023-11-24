@@ -125,6 +125,7 @@ export const Overlay = styled.div`
     background-size: cover;
     background-position: 0 0;
     color: #ffffff;
+    overflow: hidden;
     position: relative;
     left: -100%;
     height: 100%;
@@ -179,43 +180,3 @@ export const Label = styled.label`
     color: #000;
     font-size: 14px;
 `;
-
-// export const Toggle = styled.div`
-//     margin: 0 0 1.5rem; box-sizing: border-box;
-//     font-size: 0;
-//     display: flex; flex-flow: row nowrap;
-//     justify-content: flex-start; align-items: stretch;
-//     input {@include hideInput;}
-//     input + label {
-//         margin: 0; padding: .75rem 2rem; box-sizing: border-box;
-//         position: relative; display: inline-block;
-//         border: solid 1px #DDD; background-color: #FFF;
-//         font-size: 1rem; line-height: 140%; font-weight: 600; text-align: center;
-//         box-shadow: 0 0 0 rgba(255,255,255,0);
-//         transition: 
-//             border-color .15s ease-out, 
-//             color .25s ease-out, 
-//             background-color .15s ease-out,
-//             box-shadow .15s ease-out;
-    
-//             &:first-of-type {border-radius: 6px 0 0 6px; border-right: none;}
-// 		&:last-of-type {border-radius: 0 6px 6px 0; border-left: none;}
-// 	}
-// 	input:hover + label {border-color: $darkNavy;}
-// 	input:checked + label {
-// 		background-color: $teal2;
-// 		color: #FFF;
-// 		box-shadow: $activeShadow;
-// 		border-color: $teal2;
-// 		z-index: 1;
-// 	}
-// 	input:focus + label {@include focusOutline;}
-
-// 	@include breakpoint(800) {
-// 		input + label {
-// 			padding: .75rem .25rem;
-// 			flex: 0 0 50%;
-// 			display: flex; justify-content: center; align-items: center;
-// 		}
-// 	}
-// `;

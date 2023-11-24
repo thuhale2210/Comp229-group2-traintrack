@@ -6,6 +6,7 @@
 
 * {
   box-sizing: border-box;
+  overflow-y: hidden;
 }
 
 .App {
@@ -24,7 +25,7 @@
 }
 
 .App-header {
-  background-color: #FFFFFF;
+  background-color: #F6F5F7;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

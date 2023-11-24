@@ -63,7 +63,7 @@ const SignUp = ({ signIn }) => {
 				className="bg-white flex items-center justify-center flex-col px-10 h-full text-center"
 				onSubmit={formik.handleSubmit}
 			>
-				<h4 className="font-bold my-5 text-black">Create Account</h4>
+				<h4 className="font-bold mt-5 text-black">Create Account</h4>
 				<input
 					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-base"
 					type="text"
