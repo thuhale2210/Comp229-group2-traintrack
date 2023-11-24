@@ -1,7 +1,6 @@
 import * as Components from '../components';
 
 const Overlay = ({ signIn, toggle }) => {
-
     return (
         <Components.OverlayContainer signingIn={signIn}>
             <Components.Overlay signingIn={signIn}>

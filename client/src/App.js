@@ -1,8 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
-import Login from './components/login';
 import LandingPage from './components/pages/landingPage';
-import CustomerHome from './components/customerHome';
+import CustomerHome from './components/pages/customerHomePage';
 import Footer from './components/footer';
 
 function App() {

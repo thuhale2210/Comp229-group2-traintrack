@@ -159,7 +159,7 @@ const SignUp = ({ signIn }) => {
 				</div>
 				{/* <ErrorMessage className="text-red-500 text-xs" name="role" component="div" /> */}
 				<button
-					className="rounded-full border-2 border-solid border-orange-500 bg-orange-500 text-white font-bold text-xs md:text-sm lg:text-base px-12 md:px-16 py-2 md:py-3 uppercase tracking-wide transition-transform duration-80 ease-in focus:outline-none active:scale-95"
+					className="rounded-full border-2 border-solid border-primary-red bg-primary-red text-white font-bold text-xs md:text-sm lg:text-base px-12 md:px-16 py-2 md:py-3 uppercase tracking-wide transition-transform duration-80 ease-in focus:outline-none active:scale-95"
 					type="submit"
 				>
 					Sign up
