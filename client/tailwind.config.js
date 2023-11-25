@@ -18,8 +18,11 @@ module.exports = {
     },
     extend: {
       colors: {
-        'primary-red': '#ff4b2a',
-        'secondary-red': '#fc445d',
+        'primary-red': '#FF4B2A',
+        'secondary-red': '#FC445D',
+        'primary-gray': '#49525A',
+        'secondary-gray': '#B3B7BD',
+        'primary-white': '#F6F5F7',
       },
       fontSize: {
         8: ['0.5rem', '0.688rem'],
