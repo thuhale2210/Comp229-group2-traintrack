@@ -18,7 +18,6 @@ const NavBar = () => {
     if (!match) {
       return false;
     }
-    // Check if the current location pathname starts with the link's href
     return location.pathname.startsWith(match.url);
   };
 
