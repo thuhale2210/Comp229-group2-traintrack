@@ -1,19 +1,28 @@
 import React from 'react';
 
 const UpcomingSchedule = ({ upcomingAppointments }) => (
-  <div className="mr-8">
+  <div>
     <h2 className="text-2xl font-bold mb-4">Upcoming Schedule</h2>
-    {upcomingAppointments.map((appointment, index) => (
-      <div key={index} className="mb-4">
-        <p>Date: {appointment.date}</p>
-        <p>Time: {appointment.time}</p>
-        <p>Focus Area: {appointment.focusArea}</p>
-        <p>Trainer: {appointment.trainer}</p>
-        <p>Duration: {appointment.duration}</p>
-        <p>Special Request: {appointment.specialRequest}</p>
-        <hr className="my-2" />
+    <div className="table-container">
+      <div className="table-row header">
+        <div>Date</div>
+        <div>Time</div>
+        <div>Focus Area</div>
+        <div>Trainer</div>
+        <div>Duration</div>
+        <div>Special Request</div>
       </div>
-    ))}
+      {upcomingAppointments.map((appointment, index) => (
+        <div key={index} className="table-row">
+          <div>{appointment.date}</div>
+          <div>{appointment.time}</div>
+          <div>{appointment.focusArea}</div>
+          <div>{appointment.trainer}</div>
+          <div>{appointment.duration}</div>
+          <div>{appointment.specialRequest}</div>
+        </div>
+      ))}
+    </div>
   </div>
 );
 
