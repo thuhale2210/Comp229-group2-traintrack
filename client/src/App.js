@@ -4,6 +4,7 @@ import LandingPage from './components/pages/landingPage';
 import Footer from './components/footer';
 import CustomerHomePage from './components/pages/customerHomePage';
 import BookAppointmentPage from './components/pages/customerBookAppointmentPage';
+import AppointmentPage from './components/pages/appointmentPage';
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
             <Route path='/home/book-appointment' element={<BookAppointmentPage />} />
             <Route path='/fitness-tracker' element={<CustomerHomePage />} />
             <Route path='/exercises' element={<CustomerHomePage />} />
-            <Route path='/appointment' element={<CustomerHomePage />} />
+            <Route path='/appointment' element={<AppointmentPage />} />
             <Route path='/profile' element={<CustomerHomePage />} />
           </Routes>
         </Router>

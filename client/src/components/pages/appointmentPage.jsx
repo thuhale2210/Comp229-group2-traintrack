@@ -1,8 +1,8 @@
 // pages/AppointmentPage.js
 import React from 'react';
-import NavBar from '../components/NavBar';
-import UpcomingSchedule from '../components/UpcomingSchedule';
-import WorkoutHistory from '../components/WorkoutHistory';
+import NavBar from '../customerNavBar';
+import UpcomingSchedule from '../customerAppointmentPage/UpcomingSchedule';
+import WorkoutHistory from '../customerAppointmentPage/WorkoutHistory';
 
 const upcomingAppointments = [
   {
