@@ -1,8 +1,9 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
 import LandingPage from './components/pages/landingPage';
-import CustomerHome from './components/pages/customerHomePage';
 import Footer from './components/footer';
+import CustomerHomePage from './components/pages/customerHomePage';
+import BookAppointmentPage from './components/pages/customerBookAppointmentPage';
 
 function App() {
   return (
@@ -12,11 +13,12 @@ function App() {
           <Routes>
             {/* Don't forget to change the element to the correct component */}
             <Route path='/' element={<LandingPage />} />
-            <Route path='/home' element={<CustomerHome />} />
-            <Route path='/fitness-tracker' element={<CustomerHome />} />
-            <Route path='/exercises' element={<CustomerHome />} />
-            <Route path='/appointment' element={<CustomerHome />} />
-            <Route path='/profile' element={<CustomerHome />} />
+            <Route path='/home' element={<CustomerHomePage />} />
+            <Route path='/home/book-appointment' element={<BookAppointmentPage />} />
+            <Route path='/fitness-tracker' element={<CustomerHomePage />} />
+            <Route path='/exercises' element={<CustomerHomePage />} />
+            <Route path='/appointment' element={<CustomerHomePage />} />
+            <Route path='/profile' element={<CustomerHomePage />} />
           </Routes>
         </Router>
         <Footer />

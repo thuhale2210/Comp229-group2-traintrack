@@ -75,12 +75,30 @@ export const Input = styled.input`
 
 export const Button = styled.button`
     border-radius: 20px;
-    border: 1px solid #ff4b2b;
     background-color: #ff4b2b;
     color: #ffffff;
     font-size: 12px;
     font-weight: bold;
-    padding: 12px 45px;
+    padding: 10px 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    &:active {
+        transform: scale(0.95);
+    }
+    &:focus {
+        outline: none;
+    }
+`;
+
+export const SecondButton = styled.button`
+    border-radius: 20px;
+    border: 2px solid #FF4B2B;
+    background-color: #FFFFFF;
+    color: #FF4B2A;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 40px;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
@@ -94,7 +112,7 @@ export const Button = styled.button`
 
 export const GhostButton = styled(Button)`
     background-color: transparent;
-    border-color: #ffffff;
+    border-color: #ffffff !important;
 `;
 
 export const Anchor = styled.a`
@@ -161,7 +179,7 @@ export const RightOverlayPanel = styled(OverlayPanel)`
     ${props => (props.signingIn !== true ? `transform: translateX(20%);` : null)}
 `;
 export const Paragraph = styled.p`
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 100;
     line-height: 20px;
     letter-spacing: 0.5px;

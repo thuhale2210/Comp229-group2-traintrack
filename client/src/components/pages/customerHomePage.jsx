@@ -1,22 +1,25 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import NavBar from '../customerNavBar'
-import BookAppointment from '../customerHomePage/bookAppointment'
+import { Button } from '../components'
 
-const CustomerHome = () => {
+const CustomerHomePage = () => {
   return (
     <>
       <NavBar />
       {/* These divs are temporary. Gonna be replaced with the actual components. */}
       <div className='h-screen'>
-        <div className='bg-secondary-gray w-screen h-1/2 mt-20'>
+        <div className='bg-secondary-gray w-screen h-1/2 mt-20 text-base'>
           Charts from Fitness Tracker
         </div>
         <div className='w-screen h-1/3 flex mt-5'>
-          <div className='w-3/4 bg-secondary-gray'>
+          <div className='w-5/6 bg-secondary-gray text-base'>
             Upcoming Appointments
           </div>
-          <div className='w-1/4'>
-            <BookAppointment className='fixed bottom-0'/>
+          <div className='w-1/6'>
+            <Link to='/home/book-appointment'>
+              <Button label='Book Appointment' className='rounded-full'>Book Appointment</Button>
+            </Link>
           </div>
         </div>
       </div>
@@ -24,4 +27,4 @@ const CustomerHome = () => {
   )
 }
 
-export default CustomerHome
+export default CustomerHomePage
