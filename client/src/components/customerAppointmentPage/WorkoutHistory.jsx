@@ -1,29 +1,36 @@
+// WorkoutHistory.js
 import React from 'react';
 
-const WorkoutHistory = ({ workoutHistory }) => (
-  <div>
-    <h2 className="text-2xl font-bold mb-4">Workout History</h2>
-    <div className="table-container">
-      <div className="table-row header">
-        <div>Date</div>
-        <div>Time</div>
-        <div>Focus Area</div>
-        <div>Trainer</div>
-        <div>Duration</div>
-        <div>Special Request</div>
-      </div>
-      {workoutHistory.map((workout, index) => (
-        <div key={index} className="table-row">
-          <div>{workout.date}</div>
-          <div>{workout.time}</div>
-          <div>{workout.focusArea}</div>
-          <div>{workout.trainer}</div>
-          <div>{workout.duration}</div>
-          <div>{workout.specialRequest}</div>
-        </div>
-      ))}
+const WorkoutHistory = ({ workoutHistory }) => {
+  return (
+    <div className="mb-4"> {/* Apply Tailwind classes for spacing */}
+      <h2 className="text-lg font-semibold mb-2">Workout History</h2> {/* Apply Tailwind classes for styling */}
+      <table className="w-full border-collapse">
+        <thead>
+          <tr className="border-b">
+            <th className="py-2 px-4 text-center">Date</th>
+            <th className="py-2 px-4 text-center">Time</th>
+            <th className="py-2 px-4 text-center">Focus Area</th>
+            <th className="py-2 px-4 text-center">Trainer</th>
+            <th className="py-2 px-4 text-center">Duration</th>
+            <th className="py-2 px-4 text-center">Special Request</th>
+          </tr>
+        </thead>
+        <tbody>
+          {workoutHistory.map((workout, index) => (
+            <tr key={index} className="border-b">
+              <td className="py-2 px-4">{workout.date}</td>
+              <td className="py-2 px-4">{`${workout.time} `}</td>
+              <td className="py-2 px-4">{workout.focusArea}</td>
+              <td className="py-2 px-4">{workout.trainer}</td>
+              <td className="py-2 px-4">{`${workout.duration} minute${workout.duration > 1 ? 's' : ''}`}</td>
+              <td className="py-2 px-4">{workout.specialRequest}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
-  </div>
-);
+  );
+};
 
 export default WorkoutHistory;
