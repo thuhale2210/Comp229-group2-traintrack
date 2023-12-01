@@ -27,13 +27,13 @@ const Calendar = () => {
             const newEvent = {
                 start: slotInfo.start,
                 end: slotInfo.end,
-            title: 'New Appointment',
+                title: 'New Appointment',
             };
             const updatedEvents = events.filter((event) => event !== selectedSlot);
             setEvents([...updatedEvents, newEvent]);
             setChosenDateTime({
                 start: moment(slotInfo.start).format('LLL'),
-                end: moment(slotInfo.endha).format('LLL'),
+                end: moment(slotInfo.end).format('LLL'),
             });
 
             // Set the selected slot
@@ -57,31 +57,39 @@ const Calendar = () => {
         window.location.reload();
     };
 
-    return (
-        <div>
-            <BigCalendar
-                localizer={localizer}
-                events={events}
-                startAccessor="start"
-                endAccessor="end"
-                onSelectSlot={handleSelectSlot}
-                selectable
-                min={new Date(moment().set({ hour: 6, minute: 0, second: 0, millisecond: 0 }))}
-                max={new Date(moment().set({ hour: 23, minute: 0, second: 0, millisecond: 0 }))}
-                defaultView="week"
-                views={['week']}
-            />
-            {chosenDateTime && (
-                <div className='mt-3'>
-                    <AppointmentDetails
-                        chosenDateTime={chosenDateTime}
-                        onChangeAppointment={handleChangeAppointment}
-                        trainerName={trainerName}
-                    />
-                </div>
-            )}
-        </div>
-    );
-};
+    // Check if user changes the trainer
+    const handleTrainerChange = () => {
+        if (trainerName) {
+            window.location.reload();
+        }
+    }
 
-export default Calendar;
+        return (
+            <div>
+                <BigCalendar
+                    localizer={localizer}
+                    events={events}
+                    startAccessor="start"
+                    endAccessor="end"
+                    onSelectSlot={handleSelectSlot}
+                    selectable
+                    min={new Date(moment().set({ hour: 6, minute: 0, second: 0, millisecond: 0 }))}
+                    max={new Date(moment().set({ hour: 23, minute: 0, second: 0, millisecond: 0 }))}
+                    defaultView="week"
+                    views={['week']}
+                />
+                {chosenDateTime && (
+                    <div className='mt-3'>
+                        <AppointmentDetails
+                            chosenDateTime={chosenDateTime}
+                            onChangeAppointment={handleChangeAppointment}
+                            trainerName={trainerName}
+                            onChangeTrainer={handleTrainerChange}
+                        />
+                    </div>
+                )}
+            </div>
+        );
+    };
+
+    export default Calendar;

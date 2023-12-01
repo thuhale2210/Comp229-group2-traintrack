@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { useFormik, ErrorMessage } from 'formik';
+import { useFormik } from 'formik';
 import axios from 'axios';
 
 const SignIn = ({ signIn }) => {
@@ -37,7 +37,7 @@ const SignIn = ({ signIn }) => {
 			>
 				<h1 className="font-bold m-0">Sign in</h1>
 				<input
-					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-base"
+					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-sm"
 					type="email"
 					name="email"
 					placeholder="Enter your email"
@@ -46,7 +46,7 @@ const SignIn = ({ signIn }) => {
 				/>
 				{/* <ErrorMessage className="text-red-500 text-xs" name="email" component="div" /> */}
 				<input
-					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-base"
+					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-sm"
 					type="password"
 					name="password"
 					placeholder="Enter your password"
@@ -54,11 +54,11 @@ const SignIn = ({ signIn }) => {
 					onChange={formik.handleChange}
 				/>
 				{/* <ErrorMessage className="text-red-500 text-xs" name="password" component="div" /> */}
-				<a className="text-gray-700 text-base md:text-lg no-underline my-4" href="#">
+				<a className="text-gray-700 text-sm md:text-lg no-underline my-4" href="#">
 					Forgot your password?
 				</a>
 				<button
-					className="rounded-full border-2 border-solid border-primary-red bg-primary-red text-white font-bold text-xs md:text-sm lg:text-base px-12 md:px-16 py-2 md:py-3 uppercase tracking-wide transition-transform duration-80 ease-in focus:outline-none active:scale-95"
+					className="rounded-full border-2 border-solid border-primary-red bg-primary-red text-white font-bold text-xs md:text-sm lg:text-sm px-12 md:px-16 py-2 md:py-3 uppercase tracking-wide transition-transform duration-80 ease-in focus:outline-none active:scale-95"
 					type="submit"
 				>
 					Sign In
