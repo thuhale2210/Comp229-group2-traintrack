@@ -8,7 +8,8 @@ import BookAppointmentPage from './components/pages/customerBookAppointmentPage'
 import AppointmentPage from './components/pages/appointmentPage';
 import ExerciseDetail from './components/pages/ExerciseDetail';
 import Exercise from './components/pages/Exercise';
-
+import CustomerProfile from './components/pages/customerProfile ';
+ 
 function App() {
   return (
     <div className="App">
@@ -23,7 +24,7 @@ function App() {
             <Route path='/exercises' element={<Exercise />} />
             <Route path="/exercise/:id" element={<ExerciseDetail />} />
             <Route path='/appointment' element={<AppointmentPage />} />
-            <Route path='/profile' element={<CustomerHomePage />} />
+            <Route path='/profile' element={<CustomerProfile />} />
           </Routes>
         </Router>
         <Footer />
@@ -31,5 +32,5 @@ function App() {
     </div>
   );
 }
-
+ 
 export default App;
