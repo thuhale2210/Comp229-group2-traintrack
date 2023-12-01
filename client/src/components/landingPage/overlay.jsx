@@ -12,7 +12,7 @@ const Overlay = ({ signIn, toggle }) => {
                 <Components.RightOverlayPanel signingIn={signIn}>
                     <Components.Title>Hey there!</Components.Title>
                     <Components.Paragraph>
-                        Enter your personal details and start journey with us
+                        Sign up an account and start your journey with us
                     </Components.Paragraph>
                     <Components.GhostButton onClick={() => toggle(false)}>Sign Up</Components.GhostButton>
                 </Components.RightOverlayPanel>

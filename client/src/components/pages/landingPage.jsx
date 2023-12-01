@@ -3,17 +3,23 @@ import { Container as LandingPageContainer } from '../components';
 import SignIn from '../landingPage/signIn';
 import SignUp from '../landingPage/signUp';
 import Overlay from '../landingPage/overlay';
+import Logo from '../../images/logo.png';
 
 const LandingPage = () => {
 	const [signIn, toggle] = useState(true);
 
 	return (
-		<div>
-			<LandingPageContainer>
-				<SignUp signIn={signIn} />
-				<SignIn signIn={signIn} />
-				<Overlay signIn={signIn} toggle={toggle} />
-			</LandingPageContainer>
+		<div className='h-screen flex flex-col items-center justify-center'>
+			<div>
+				<img src={Logo} alt="logo" className="w-[200px]" />
+			</div>
+			<div className='pt-10'>
+				<LandingPageContainer>
+					<SignUp signIn={signIn} />
+					<SignIn signIn={signIn} />
+					<Overlay signIn={signIn} toggle={toggle} />
+				</LandingPageContainer>
+			</div>
 		</div>
 	);
 };

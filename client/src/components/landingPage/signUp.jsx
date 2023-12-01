@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { useFormik, ErrorMessage } from 'formik';
+import { useFormik } from 'formik';
 import axios from 'axios';
 
 const SignUp = ({ signIn }) => {
@@ -55,9 +55,8 @@ const SignUp = ({ signIn }) => {
 
 	return (
 		<div
-			className={`absolute top-0 h-full transition-all duration-600 ease-in-out left-0 w-1/2 ${
-				!signIn ? 'transform translate-x-full opacity-100 z-5' : 'opacity-0 z-1'
-			}`}
+			className={`absolute top-0 h-full transition-all duration-600 ease-in-out left-0 w-1/2 ${!signIn ? 'transform translate-x-full opacity-100 z-5' : 'opacity-0 z-1'
+				}`}
 		>
 			<form
 				className="bg-white flex items-center justify-center flex-col px-10 h-full text-center"
@@ -65,7 +64,7 @@ const SignUp = ({ signIn }) => {
 			>
 				<h4 className="font-bold mt-5 text-black">Create Account</h4>
 				<input
-					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-base"
+					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-sm"
 					type="text"
 					name="firstName"
 					placeholder="Enter your First Name"
@@ -74,7 +73,7 @@ const SignUp = ({ signIn }) => {
 				/>
 				{/* <ErrorMessage className="text-red-500 text-xs" name="firstName" component="div" /> */}
 				<input
-					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-base"
+					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-sm"
 					type="text"
 					name="lastName"
 					placeholder="Enter your Last Name"
@@ -82,13 +81,53 @@ const SignUp = ({ signIn }) => {
 					onChange={formik.handleChange}
 				/>
 				{/* <ErrorMessage className="text-red-500 text-xs" name="lastName" component="div" /> */}
-				<div className="flex items-center justify-items-stretch">
-					<div className="col-auto">
-						<p className="text-black text-sm font-hairline tracking-wide my-5 mb-8">Gender</p>
+				<div className="flex items-center w-full">
+					<div className="col-auto w-1/3">
+						<p className="text-gray-800 text-sm font-hairline tracking-wide">Gender:</p>
 					</div>
-					<div className="col-auto">
+					<div className='col-auto flex w-1/3'>
+						<label class="cursor-pointer">
+							<input
+								type="radio"
+								className="peer sr-only"
+								name="gender"
+								checked={formik.values.gender === 'male'}
+								onChange={() => formik.setFieldValue('gender', 'male')} />
+							<div class="w-32 max-w-xl rounded-md bg-white my-3 p-2 text-gray-600 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-primary-red peer-checked:ring-primary-red peer-checked:ring-offset-2">
+								<div class="flex flex-col gap-1">
+									<div class="flex items-center justify-between">
+										<p class="text-sm text-gray-800">Male</p>
+										<div>
+											<svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 13.8l-2.175-2.175q-.275-.275-.675-.275t-.7.3q-.275.275-.275.7q0 .425.275.7L9.9 15.9q.275.275.7.275q.425 0 .7-.275l5.675-5.675q.275-.275.275-.675t-.3-.7q-.275-.275-.7-.275q-.425 0-.7.275ZM12 22q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Z" /></svg>
+										</div>
+									</div>
+								</div>
+							</div>
+						</label>
+					</div>
+					<div className="col-auto flex w-1/3">
+						<label class="cursor-pointer">
+							<input
+								type="radio"
+								className="peer sr-only"
+								name="gender"
+								checked={formik.values.gender === 'female'}
+								onChange={() => formik.setFieldValue('gender', 'female')} />
+							<div class="w-32 max-w-xl rounded-md bg-white my-3 p-2 text-gray-600 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-primary-red peer-checked:ring-primary-red peer-checked:ring-offset-2">
+								<div class="flex flex-col gap-1">
+									<div class="flex items-center justify-between">
+										<p class="text-sm text-gray-800">Female</p>
+										<div>
+											<svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 13.8l-2.175-2.175q-.275-.275-.675-.275t-.7.3q-.275.275-.275.7q0 .425.275.7L9.9 15.9q.275.275.7.275q.425 0 .7-.275l5.675-5.675q.275-.275.275-.675t-.3-.7q-.275-.275-.7-.275q-.425 0-.7.275ZM12 22q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Z" /></svg>
+										</div>
+									</div>
+								</div>
+							</div>
+						</label>
+					</div>
+					{/* <div className="col-auto">
 						<input
-							className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-base"
+							className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-sm"
 							type="radio"
 							name="gender"
 							checked={formik.values.gender === 'male'}
@@ -98,18 +137,18 @@ const SignUp = ({ signIn }) => {
 					</div>
 					<div className="col-auto">
 						<input
-							className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-base"
+							className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-sm"
 							type="radio"
 							name="gender2"
 							checked={formik.values.gender === 'female'}
 							onChange={() => formik.setFieldValue('gender', 'female')}
 						></input>
 						<label className="text-black text-sm">Female</label>
-					</div>
+					</div> */}
 				</div>
 				{/* <ErrorMessage className="text-red-500 text-xs" name="gender" component="div" /> */}
 				<input
-					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-base"
+					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-sm"
 					type="email"
 					name="email"
 					placeholder="Email"
@@ -118,7 +157,7 @@ const SignUp = ({ signIn }) => {
 				/>
 				{/* <ErrorMessage className="text-red-500 text-xs" name="email" component="div" /> */}
 				<input
-					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-base"
+					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-sm"
 					type="password"
 					name="password"
 					placeholder="Password"
@@ -127,7 +166,7 @@ const SignUp = ({ signIn }) => {
 				/>
 				{/* <ErrorMessage className="text-red-500 text-xs" name="password" component="div" /> */}
 				<input
-					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-base"
+					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-sm"
 					type="password"
 					name="confirmPassword"
 					placeholder="Confirm your password"
@@ -135,33 +174,55 @@ const SignUp = ({ signIn }) => {
 					onChange={formik.handleChange}
 				/>
 				{/* <ErrorMessage className="text-red-500 text-xs" name="confirmPassword" component="div" /> */}
-				<div className="flex items-center left-0">
-					<div className="col-auto">
-						<input
-							className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-base"
-							type="radio"
-							name="role"
-							checked={formik.values.role === 'customer'}
-							onChange={() => formik.setFieldValue('role', 'customer')}
-						></input>
-						<label className="text-black text-sm">Customer</label>
+				<div className="flex items-center w-full">
+					<div className="col-auto w-1/3">
+						<p className="text-gray-800 text-sm font-hairline tracking-wide">You are:</p>
 					</div>
-					<div className="col-auto">
-						<input
-							className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-base"
-							type="radio"
-							name="role2"
-							checked={formik.values.role === 'trainer'}
-							onChange={() => formik.setFieldValue('role', 'trainer')}
-						></input>
-						<label className="text-black text-sm">Personal Trainer</label>
+					<div className='col-auto flex w-1/3'>
+						<label class="cursor-pointer">
+							<input
+								type="radio"
+								className="peer sr-only"
+								name="role"
+								checked={formik.values.role === 'customer'}
+								onChange={() => formik.setFieldValue('role', 'customer')} />
+							<div class="w-32 max-w-xl rounded-md bg-white my-3 p-2 text-gray-600 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-primary-red peer-checked:ring-primary-red peer-checked:ring-offset-2">
+								<div class="flex flex-col gap-1">
+									<div class="flex items-center justify-between">
+										<p class="text-sm text-gray-800">Customer</p>
+										<div>
+											<svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 13.8l-2.175-2.175q-.275-.275-.675-.275t-.7.3q-.275.275-.275.7q0 .425.275.7L9.9 15.9q.275.275.7.275q.425 0 .7-.275l5.675-5.675q.275-.275.275-.675t-.3-.7q-.275-.275-.7-.275q-.425 0-.7.275ZM12 22q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Z" /></svg>
+										</div>
+									</div>
+								</div>
+							</div>
+						</label>
+					</div>
+					<div className="col-auto flex w-1/3">
+						<label class="cursor-pointer">
+							<input
+								type="radio"
+								className="peer sr-only"
+								name="role2"
+								checked={formik.values.role === 'trainer'}
+								onChange={() => formik.setFieldValue('role', 'trainer')} />
+							<div class="w-32 max-w-xl rounded-md bg-white my-3 p-2 text-gray-600 ring-2 ring-transparent transition-all hover:shadow peer-checked:text-primary-red peer-checked:ring-primary-red peer-checked:ring-offset-2">
+								<div class="flex flex-col gap-1">
+									<div class="flex items-center justify-between">
+										<p class="text-sm text-gray-800">Trainer</p>
+										<div>
+											<svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 13.8l-2.175-2.175q-.275-.275-.675-.275t-.7.3q-.275.275-.275.7q0 .425.275.7L9.9 15.9q.275.275.7.275q.425 0 .7-.275l5.675-5.675q.275-.275.275-.675t-.3-.7q-.275-.275-.7-.275q-.425 0-.7.275ZM12 22q-2.075 0-3.9-.788q-1.825-.787-3.175-2.137q-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175q1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138q1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175q-1.35 1.35-3.175 2.137Q14.075 22 12 22Z" /></svg>
+										</div>
+									</div>
+								</div>
+							</div>
+						</label>
 					</div>
 				</div>
 				{/* <ErrorMessage className="text-red-500 text-xs" name="role" component="div" /> */}
 				<button
-					className="rounded-full border-2 border-solid border-primary-red bg-primary-red text-white font-bold text-xs md:text-sm lg:text-base px-12 md:px-16 py-2 md:py-3 uppercase tracking-wide transition-transform duration-80 ease-in focus:outline-none active:scale-95"
-					type="submit"
-				>
+					className="mt-3 rounded-full border-2 border-solid border-primary-red bg-primary-red text-white font-bold text-xs md:text-sm lg:text-sm px-12 md:px-16 py-2 md:py-3 uppercase tracking-wide transition-transform duration-80 ease-in focus:outline-none active:scale-95"
+					type="submit">
 					Sign up
 				</button>
 			</form>

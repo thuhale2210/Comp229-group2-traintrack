@@ -37,7 +37,7 @@ const BookAppointmentPage = () => {
               <ChooseTrainer onTrainerChange={handleTrainerChange} />
             </div>
             {chosenTrainer ? (
-              <div className="w-3/4 mr-5 rounded-lg p-5 text-base overflow-y-scroll">
+              <div className="w-3/4 mr-5 rounded-lg p-3 text-base overflow-y-scroll">
                 <Calendar chosenTrainer={chosenTrainer} />
               </div>
             ) : (

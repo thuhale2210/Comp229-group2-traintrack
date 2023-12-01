@@ -1,41 +1,82 @@
-// pages/AppointmentPage.js
 import React from 'react';
 import NavBar from '../customerNavBar';
 import UpcomingSchedule from '../customerAppointmentPage/UpcomingSchedule';
 import WorkoutHistory from '../customerAppointmentPage/WorkoutHistory';
 
-const upcomingAppointments = [
-  {
-    date: '2023-12-01',
-    time: '10:00 AM',
-    focusArea: 'Upper Body',
-    trainer: 'John Doe',
-    duration: '1 hour',
-    specialRequest: 'Bring water bottle',
-  },
-  // Add more appointment data as needed
-];
+const AppointmentPage = () => {
+  // Mock data for testing
+  const upcomingAppointments = [
+    {
+      date: '11/13/2023',
+      time: '8:00 AM',
+      focusArea: 'Core',
+      trainer: 'David',
+      duration: 60,
+      specialRequest: 'N/A',
+    },
+    {
+      date: '11/11/2023',
+      time: '8:00 AM',
+      focusArea: 'Upper body',
+      trainer: 'David',
+      duration: 60,
+      specialRequest: 'N/A',
+    },
+    // Add more upcoming appointments as needed
+  ];
 
-const workoutHistory = [
-  {
-    date: '2023-11-15',
-    time: '2:00 PM',
-    focusArea: 'Lower Body',
-    trainer: 'Jane Smith',
-    duration: '45 minutes',
-    specialRequest: 'N/A',
-  },
-  // Add more workout history data as needed
-];
+  const workoutHistory = [
+    {
+      date: '11/08/2023',
+      time: '8:30 PM',
+      focusArea: 'Lower body',
+      trainer: 'Self-training',
+      duration: 30,
+      specialRequest: 'N/A',
+    },
+    {
+      date: '11/04/2023',
+      time: '8:00 AM',
+      focusArea: 'Core',
+      trainer: 'David',
+      duration: 60,
+      specialRequest: 'N/A',
+    },
+    {
+      date: '11/01/2023',
+      time: '8:30 PM',
+      focusArea: 'Lower body',
+      trainer: 'Self-training',
+      duration: 30,
+      specialRequest: 'N/A',
+    },
+    {
+      date: '10/29/2023',
+      time: '8:00 AM',
+      focusArea: 'Upper body',
+      trainer: 'David',
+      duration: 60,
+      specialRequest: 'N/A',
+    },
+    // Add more workout history entries as needed
+  ];
 
-const AppointmentPage = () => (
-  <div>
-    <NavBar />
-    <div className="flex justify-center mt-16">
-      <UpcomingSchedule upcomingAppointments={upcomingAppointments} />
-      <WorkoutHistory workoutHistory={workoutHistory} />
-    </div>
-  </div>
-);
+  return (
+    <>
+      <NavBar />
+      <div className='flex flex-col'>
+        <div className="mt-8">
+          <div className="flex bg-gray-200 rounded-lg p-4 mb-4">
+            <UpcomingSchedule upcomingAppointments={upcomingAppointments} />
+          </div>
+          <div className="flex bg-gray-200 rounded-lg p-4">
+            <WorkoutHistory workoutHistory={workoutHistory} />
+          </div>
+        </div>
+      </div>
+    </>
+
+  );
+};
 
 export default AppointmentPage;

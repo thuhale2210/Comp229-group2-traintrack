@@ -1,6 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
-import { Box } from '@mui/material';
 import LandingPage from './components/pages/landingPage';
 import Footer from './components/footer';
 import CustomerHomePage from './components/pages/customerHomePage';
@@ -20,7 +19,6 @@ function App() {
             <Route path='/' element={<LandingPage />} />
             <Route path='/home' element={<CustomerHomePage />} />
             <Route path='/home/book-appointment' element={<BookAppointmentPage />} />
-            <Route path='/fitness-tracker' element={<CustomerHomePage />} />
             <Route path='/exercises' element={<Exercise />} />
             <Route path="/exercise/:id" element={<ExerciseDetail />} />
             <Route path='/appointment' element={<AppointmentPage />} />
