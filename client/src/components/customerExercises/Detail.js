@@ -27,7 +27,7 @@ const Detail = ({ exerciseDetail }) => {
   return (
     <Box>
     <Stack gap="60px" sx={{ p: '20px', alignItems: 'center' }}>
-      <NavBar />
+    <NavBar />
       <img src={gifUrl} alt={name} className="detail-image" />
       <Stack sx={{ gap: { lg: '35px', xs: '20px' } }}>
         <Typography sx={{ fontSize: { lg: '64px', xs: '30px' } }} fontWeight={700} textTransform="capitalize">

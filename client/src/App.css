@@ -142,15 +142,6 @@ body {
   border: 1px solid #FF2625 !important;
 }
 
-.exercise-video {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  width: 387px;
-  height: 381px;
-  text-decoration: none;
-}
-
 @media screen and (max-width:1200px) {
   .detail-image {
     width: 300px;
@@ -159,7 +150,7 @@ body {
 
 
   .react-horizontal-scrolling-menu--scroll-container {
-    width: 500px;
+    width: 400px;
   }
 
   .left-arrow,
@@ -175,15 +166,22 @@ body {
     width: 320px;
   }
 
-  .exercise-video {
-    width: 320px;
-    height: 300px;
-  }
-
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width:500px) {
   .exercise-card {
-    width: 280px;
+    width: 250px;
   }
+}
+
+.horizontal-scrollbar {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px; /* Adjust the gap as needed */
+}
+
+.scroll-item {
+  margin: 0 10px; /* Adjust the margin as needed */
+  box-sizing: border-box;
+  width: 100%;
 }
