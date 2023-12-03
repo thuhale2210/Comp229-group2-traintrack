@@ -77,10 +77,10 @@ export const Button = styled.button`
     border-radius: 20px;
     background-color: #FF4B2B;
     color: #FFFFFF;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
-    margin: 20px 0;
-    padding: 15px 40px;
+    margin: 0 0;
+    padding: 13px 40px;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
@@ -116,16 +116,38 @@ export const SearchButton = styled.button`
   background-color: #F6F5F7;
   color: #FF4B2B;
   border: 1px solid #FF4B2B;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: bold;
-  margin: 25px 0;
-  padding: 15px 40px;
+  margin: 20px 0;
+  padding: 13px 40px;
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: background-color 0.3s ease, color 0.3s ease, transform 80ms ease-in;
   &:hover {
     background-color: #FF4B2B;
     color: #FFFFFF;
+    transform: scale(1.05);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const LandingPageButton = styled.button`
+  border-radius: 20px;
+  color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0 0;
+  padding: 13px 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 80ms ease-in;
+  &:hover {
     transform: scale(1.05);
   }
   &:active {
