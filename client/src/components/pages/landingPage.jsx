@@ -4,6 +4,7 @@ import SignIn from '../landingPage/signIn';
 import SignUp from '../landingPage/signUp';
 import Overlay from '../landingPage/overlay';
 import Logo from '../../images/logo.png';
+import Footer from '../footer';
 
 const LandingPage = () => {
 	const [signIn, toggle] = useState(true);
@@ -20,6 +21,7 @@ const LandingPage = () => {
 					<Overlay signIn={signIn} toggle={toggle} />
 				</LandingPageContainer>
 			</div>
+			<Footer />
 		</div>
 	);
 };
