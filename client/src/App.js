@@ -6,7 +6,7 @@ import BookAppointmentPage from './components/pages/customerBookAppointmentPage'
 import AppointmentPage from './components/pages/appointmentPage';
 import ExerciseDetail from './components/pages/ExerciseDetail';
 import Exercise from './components/pages/Exercise';
-import CustomerProfile from './components/pages/customerProfile ';
+import CustomerProfile from './components/pages/customerProfile';
  
 function App() {
   return (
