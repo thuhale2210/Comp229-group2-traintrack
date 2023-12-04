@@ -3,6 +3,7 @@ import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { Typography } from '@mui/material';
 import 'react-horizontal-scrolling-menu/dist/styles.css';
 
+
 import ExerciseCard from './ExerciseCard';
 import BodyPart from './BodyPart';
 import RightArrowIcon from '../../icons/right-arrow.png';
