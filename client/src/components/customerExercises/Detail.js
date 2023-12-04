@@ -25,32 +25,44 @@ const Detail = ({ exerciseDetail }) => {
   ];
 
   return (
-    <Box>
-    <Stack gap="60px" sx={{ p: '20px', alignItems: 'center' }}>
-    <NavBar />
-      <img src={gifUrl} alt={name} className="detail-image" />
-      <Stack sx={{ gap: { lg: '35px', xs: '20px' } }}>
-        <Typography sx={{ fontSize: { lg: '64px', xs: '30px' } }} fontWeight={700} textTransform="capitalize">
+    <Box sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' }, justifyContent: 'center', alignItems: 'center' }}>
+      <NavBar />
+      <img
+        src={gifUrl}
+        alt={name}
+        className="detail-image"
+        style={{ borderRadius: '8px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)', maxWidth: '100%', height: '80%', marginRight: { xs: '0', lg: '30px' } }}
+      />
+      <Stack sx={{ gap: { xs: '20px', lg: '35px' }, maxWidth: { lg: '400px' } }}>
+        <Typography sx={{ fontSize: { lg: '30px', xs: '24px' } }} fontWeight={700} textTransform="capitalize">
           {name}
         </Typography>
-        <Typography sx={{ fontSize: { lg: '24px', xs: '18px' } }} color="#4F4C4C">
-          Exercises keep you strong.{' '}
-          <span style={{ textTransform: 'capitalize' }}>{name}</span> bup is one
-          of the best <br /> exercises to target your {target}. It will help you improve your{' '}
-          <br /> mood and gain energy.
+        <Typography sx={{ fontSize: { lg: '16px', xs: '14px' }, color: '#4F4C4C', mb: '10px' }}>
+          <span style={{ textTransform: 'capitalize' }}>{name}</span> is a great exercise to target your {target}. It helps improve mood and energy.
         </Typography>
-        {extraDetail?.map((item) => (
-          <Stack key={item.name} direction="row" gap="24px" alignItems="center">
-            <Button sx={{ background: '#FFF2DB', borderRadius: '50%', width: '100px', height: '100px' }}>
-              <img src={item.icon} alt={bodyPart} style={{ width: '50px', height: '50px' }} />
+        {extraDetail?.map((item, index) => (
+          <Stack key={item.name} direction="row" gap="16px" alignItems="center">
+            <Button
+              sx={{
+                background: '#FFF2DB',
+                borderRadius: '50%',
+                width: '40px',
+                height: '40px',
+                padding: '0',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginLeft: '15px',
+              }}
+            >
+              <img src={item.icon} alt={bodyPart} style={{ width: '20px', height: '20px' }} />
             </Button>
-            <Typography textTransform="capitalize" sx={{ fontSize: { lg: '30px', xs: '20px' } }}>
+            <Typography textTransform="capitalize" sx={{ fontSize: { lg: '16px', xs: '14px' } }}>
               {item.name}
             </Typography>
           </Stack>
         ))}
       </Stack>
-    </Stack>
     </Box>
   );
 };
