@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import { Button } from '../components';
 
 const SignUp = ({ signIn }) => {
 	const formik = useFormik({
@@ -220,11 +221,9 @@ const SignUp = ({ signIn }) => {
 					</div>
 				</div>
 				{/* <ErrorMessage className="text-red-500 text-xs" name="role" component="div" /> */}
-				<button
-					className="mt-3 rounded-full border-2 border-solid border-primary-red bg-primary-red text-white font-bold text-xs md:text-sm lg:text-sm px-12 md:px-16 py-2 md:py-3 uppercase tracking-wide transition-transform duration-80 ease-in focus:outline-none active:scale-95"
-					type="submit">
+				<Button type="submit">
 					Sign up
-				</button>
+				</Button>
 			</form>
 		</div>
 	);

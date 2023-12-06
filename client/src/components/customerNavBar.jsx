@@ -22,12 +22,12 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="fixed top-0 flex items-center w-full">
+      <div className="fixed top-0 py-2 flex items-center w-full bg-primary-white z-10">
         <Link to="/home">
-          <img src={Logo} alt="logo" className="mt-5 ml-7 w-[200px] col-auto" />
+          <img src={Logo} alt="logo" className="ml-7 w-[200px] col-auto" />
         </Link>
         <nav className="flex flex-row items-center ml-auto">
-          <ul className="mr-2 mt-3 flex flex-row">
+          <ul className="mr-2 mt-2 flex flex-row">
             <div className="text-sm p-2 align-middle">
               {navLinks.map((item) => (
                 <NavLink
