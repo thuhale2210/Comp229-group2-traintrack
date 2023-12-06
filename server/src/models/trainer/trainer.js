@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let Trainer = new Schema({ 
+// Define a sub-document schema for available dates with time slots
+const AvailableDateSchema = new Schema({
+    date: { type: Date, required: true },
+    timeSlots: [{ type: String }] // Assuming time slots are represented as strings
+});
+
+let Trainer = new Schema({
     firstName: {
         type:String
     },
@@ -19,8 +25,8 @@ let Trainer = new Schema({
     },
     role:{
         type:String
-    }
+    },
+    availableDates: [AvailableDateSchema] // Array of available dates for the trainer
 });
 
-
-module.exports = mongoose.model('Trainer',Trainer);
+module.exports = mongoose.model('Trainer', Trainer);
