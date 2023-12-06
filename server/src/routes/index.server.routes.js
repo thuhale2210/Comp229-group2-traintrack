@@ -18,7 +18,7 @@ router.route('/trainerNames').get((req, res) => {
     trainerController.getAllTrainerNames(req, res);
 });
 
-router.route('/trainers/:trainerId/available-slots').get((req, res) => {
+router.route('/trainer/:id/available-dates').get((req, res) => {
     trainerController.getAvailableDates(req, res);
 });
 
@@ -29,7 +29,7 @@ router.route('/deleteAllTrainers').delete((req, res) => {
 router.route('/addTrainer').post((req, res) => {
     trainerController.addTrainer(req, res);
 });
-    
+
 
 
 

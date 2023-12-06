@@ -56,7 +56,7 @@ class TrainerDao{
     }
 
     async findAvailableDates(req, res){
-        const { trainerId } = req.params;
+        const trainerId = req.params.id;
         console.log('Requested Trainer ID:', trainerId);
         try{
             const trainer = await Trainer.findById(trainerId);
@@ -64,11 +64,12 @@ class TrainerDao{
                 return res.status(404).json({ message: 'Trainer not found' });
             }
 
-            const allAvailableTimeSlots = trainer.availableDates.reduce((slots, availableDate) => {
-                return [...slots, ...availableDate.timeSlots];
-            }, []);
+            const availableDates = trainer.availableDates.map(date => ({
+                date: date.date,
+                timeSlots: date.timeSlots
+            }));
 
-            res.json({ availableTimeSlots: allAvailableTimeSlots });
+            res.status(200).json({ availableDates });
 
         }catch(error){
             res.status(500).json({ message: error.message });
