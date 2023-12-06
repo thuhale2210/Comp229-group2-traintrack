@@ -1,8 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import NavBar from "../customerNavBar";
 import TempAvatar from "../../images/temp_avatar.png";
 import Footer from "../footer";
 import LogOut from "../../images/logout.png";
+import axios from 'axios';
+
 const CustomerHome = () => {
   const [name , setName] = useState("")
   const [age,setAge] = useState()
@@ -37,6 +39,25 @@ const CustomerHome = () => {
     const formData = {name,age,email,phone,noofTraining, weightLoss,weight ,weightUnit,height,heightUnit,neckCirc,neckCircUnit,waistCirc,waistCircUnit,hipCirc, hipCircUnit }
     console.log(formData)
   }
+
+  
+    const [customerName, setCustomerName] = useState('');
+  
+    useEffect(() => {
+      // Fetch the ID from sessionStorage
+      const customerId = sessionStorage.getItem('userId');
+  
+      // Make an API call to get the name based on the ID
+      axios.get(`http://localhost:4000/customer/${customerId}/name`)
+        .then((response) => {
+          // Assuming the response.data has a 'name' property
+          setCustomerName(response.data.name);
+        })
+        .catch((error) => {
+          console.error('Error fetching name:', error);
+        });
+    }, []);
+
   return (
     <>
       <NavBar />
@@ -51,7 +72,7 @@ const CustomerHome = () => {
           className="rounded-full w-32 h-32 object-cover"
           onClick={handleImageClick}
         />
-        <span className="font-semibold text-gray-800 text-xl">Joe Smith</span>
+        <span className="font-semibold text-gray-800 text-xl">{customerName}</span>
       </div>
       <input
         type="file"
@@ -274,3 +295,4 @@ const CustomerHome = () => {
 };
 
 export default CustomerHome;
+
