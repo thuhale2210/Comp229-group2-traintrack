@@ -28,6 +28,7 @@ const SignIn = ({ signIn }) => {
 			.post('http://localhost:4000/login', formik.values)
 			.then((res) => {
 				console.log(res.data);
+				sessionStorage.setItem('userId', res.data.userId);
 				navigate('/home');
 			})
 			.catch((err) => console.log(err));
