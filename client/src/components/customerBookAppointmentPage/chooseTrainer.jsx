@@ -29,6 +29,7 @@ const ChooseTrainer = ({ onTrainerChange }) => {
           value: trainer.firstName
         }));
         setTrainerList(options);
+        
       }catch(error){
         console.error("Error fetching trainers:", error);
       }
@@ -38,9 +39,17 @@ const ChooseTrainer = ({ onTrainerChange }) => {
 
 
   const handleTrainerChange = (event) => {
-    const selectedTrainer = event.target.value;
-    onTrainerChange(selectedTrainer);
-    setTrainerName(selectedTrainer);
+    const selectedTrainerName = event.target.value;
+    const selectedTrainer = trainerList.find(trainer => trainer.value === selectedTrainerName);
+
+    if (selectedTrainer) {
+      onTrainerChange(selectedTrainerName);
+      setTrainerName(selectedTrainerName);
+
+      // Save the selected trainer's ID to localStorage
+      localStorage.setItem('selectedTrainerId', selectedTrainer.id);
+      console.log(selectedTrainer.id);
+    }
   };
 
   return (
