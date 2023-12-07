@@ -19,6 +19,8 @@ const AppointmentDetails = ({ chosenDateTime, onChangeAppointment, trainerName }
         console.log('Confirmed Focus Area:', chosenFocusArea);
         console.log('Confirmed Special Request:', chosenSpecialRequest);
         handleOpen();
+        window.location.href = '/appointment';
+        window.alert('Appointment confirmed!');
     };
 
     return (
