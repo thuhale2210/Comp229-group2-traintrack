@@ -39,7 +39,6 @@ const CustomerHome = () => {
     const formData = {name,age,email,phone,noofTraining, weightLoss,weight ,weightUnit,height,heightUnit,neckCirc,neckCircUnit,waistCirc,waistCircUnit,hipCirc, hipCircUnit }
     console.log(formData)
   }
-
   
     const [customerName, setCustomerName] = useState('');
   
@@ -69,7 +68,7 @@ const CustomerHome = () => {
         <img
           src={uploadedImage}
           alt="Proile Picture"
-          className="rounded-full w-32 h-32 object-cover"
+          className="rounded-full w-16 h-16 object-cover"
           onClick={handleImageClick}
         />
         <span className="font-semibold text-gray-800 text-xl">{customerName}</span>

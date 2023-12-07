@@ -34,7 +34,7 @@ const NavBar = () => {
                   to={item.href}
                   key={item.label}
                   isActive={(match, location) => isActive(match, location)}
-                  className={`leading-normal text-slate-gray mx-8 my-1 align-middle ${location.pathname.startsWith(item.href) ? 'font-bold border-primary-gray p-2' : ''
+                  className={`leading-normal text-slate-gray mx-8 my-1 align-middle ${location.pathname.startsWith(item.href) ? 'font-bold border-b border-primary-red p-2' : ''
                     }`}
                 >
                   {item.label}

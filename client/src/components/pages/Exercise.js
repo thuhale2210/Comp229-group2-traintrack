@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../customerExercises/index.css';
 
 import NavBar from '../customerNavBar';
 import Exercises from '../customerExercises/Exercises';

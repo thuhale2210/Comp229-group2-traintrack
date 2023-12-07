@@ -10,7 +10,7 @@ const LandingPage = () => {
 	const [signIn, toggle] = useState(true);
 
 	return (
-		<div className='h-screen flex flex-col items-center justify-center'>
+		<div className='flex flex-col items-center justify-center mt-10'>
 			<div>
 				<img src={Logo} alt="logo" className="w-[200px]" />
 			</div>

@@ -76,6 +76,7 @@ export const Input = styled.input`
 export const Button = styled.button`
     border-radius: 20px;
     background-color: #FF4B2B;
+    border: none;
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
@@ -95,7 +96,7 @@ export const Button = styled.button`
 export const SecondButton = styled.button`
     border-radius: 20px;
     border: 2px solid #FF4B2B;
-    background-color: #FFFFFF;
+    background-color: none;
     color: #FF4B2A;
     font-size: 12px;
     font-weight: bold;
@@ -139,6 +140,7 @@ export const SearchButton = styled.button`
 export const LandingPageButton = styled.button`
   border-radius: 20px;
   color: #FFFFFF;
+  background-color: transparent;
   border: 1px solid #FFFFFF;
   font-size: 12px;
   font-weight: bold;
@@ -156,6 +158,26 @@ export const LandingPageButton = styled.button`
   &:focus {
     outline: none;
   }
+`;
+
+export const BookButton = styled.button`
+    border-radius: 20px;
+    background-color: #FF4B2B;
+    border: none;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0 0;
+    padding: 13px 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    &:active {
+        transform: scale(0.95);
+    }
+    &:focus {
+        outline: none;
+    }
 `;
 
 export const GhostButton = styled(Button)`
