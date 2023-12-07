@@ -22,7 +22,6 @@ const AppointmentPage = () => {
       duration: 60,
       specialRequest: 'N/A',
     },
-    // Add more upcoming appointments as needed
   ];
 
   const workoutHistory = [
@@ -58,7 +57,6 @@ const AppointmentPage = () => {
       duration: 60,
       specialRequest: 'N/A',
     },
-    // Add more workout history entries as needed
   ];
 
   return (
