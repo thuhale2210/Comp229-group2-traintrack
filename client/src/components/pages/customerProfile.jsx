@@ -3,6 +3,7 @@ import NavBar from "../customerNavBar";
 import TempAvatar from "../../images/temp_avatar.png";
 import Footer from "../footer";
 import LogOut from "../../images/logout.png";
+
 const CustomerHome = () => {
   const [name , setName] = useState("")
   const [age,setAge] = useState()
