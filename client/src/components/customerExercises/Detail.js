@@ -33,8 +33,8 @@ const Detail = ({ exerciseDetail }) => {
         className="detail-image"
         style={{ borderRadius: '8px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)', maxWidth: '100%', height: '80%', marginRight: { xs: '0', lg: '30px' } }}
       />
-      <Stack sx={{ gap: { xs: '20px', lg: '35px' }, maxWidth: { lg: '400px' } }}>
-        <Typography sx={{ fontSize: { lg: '30px', xs: '24px' } }} fontWeight={700} textTransform="capitalize">
+      <Stack sx={{ gap: { xs: '20px', lg: '30px' }, maxWidth: { lg: '400px' }, marginLeft: { lg: '40px' } }}>
+        <Typography sx={{ fontSize: { lg: '35px', xs: '24px' } }} fontWeight={700} textTransform="capitalize">
           {name}
         </Typography>
         <Typography sx={{ fontSize: { lg: '16px', xs: '14px' }, color: '#4F4C4C', mb: '10px' }}>
