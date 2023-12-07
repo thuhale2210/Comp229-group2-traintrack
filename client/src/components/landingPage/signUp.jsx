@@ -2,8 +2,10 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { Button } from '../components';
+import React, { useState } from 'react';
 
 const SignUp = ({ signIn }) => {
+	const [isRegistered, setIsRegistered] = useState(false);
 	const formik = useFormik({
 		initialValues: {
 			firstName: '',
@@ -50,8 +52,13 @@ const SignUp = ({ signIn }) => {
 
 		axios
 			.post('http://localhost:4000/addAccount', newUser)
-			.then((res) => console.log(res.data))
+			.then((res) => {
+				console.log(res.data);
+				setIsRegistered(true);
+			})
 			.catch((err) => console.log(err));
+		
+		
 	};
 
 	return (
@@ -59,6 +66,11 @@ const SignUp = ({ signIn }) => {
 			className={`absolute top-0 h-full transition-all duration-600 ease-in-out left-0 w-1/2 ${!signIn ? 'transform translate-x-full opacity-100 z-5' : 'opacity-0 z-1'
 				}`}
 		>
+			{isRegistered && (
+            <div className="absolute top-10 right-10 bg-green-200 p-3 rounded-md shadow-md">
+                <p className="text-green-800">Registration successful!</p>
+            </div>
+        	)}
 			<form
 				className="bg-white flex items-center justify-center flex-col px-10 h-full text-center"
 				onSubmit={formik.handleSubmit}

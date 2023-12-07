@@ -5,8 +5,20 @@ class TrainerController {
         this.trainerService = new TrainerService();
     }
 
+    getAllTrainerNames(req, res){
+        this.trainerService.getAllNames(req, res);      
+    }
+
     getAvailableDates(req, res){
         this.trainerService.getAvailableDates(req, res);
+    }
+    
+    deleteAllTrainers(req, res){
+        this.trainerService.deleteAll(req, res);
+    }
+
+    addTrainer(req, res){
+        this.trainerService.addTrainer(req, res);
     }
 
 }

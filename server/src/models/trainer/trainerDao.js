@@ -15,7 +15,7 @@ class TrainerDao{
     }
 
     async create(req, res){
-        const { firstName, lastName, gender, email, password, role } = req.body;
+        const { firstName, lastName, gender, email, password, role, availableDates } = req.body;
 
         // Hash the password before saving it
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -28,6 +28,7 @@ class TrainerDao{
             email,
             password: hashedPassword,
             role,
+            availableDates
         });
 
         //Save the user
@@ -36,10 +37,43 @@ class TrainerDao{
         .catch(err => res.status(400).json({"error":err}));
     }
 
-    async removeAll(req, res){
-        Trainer.deleteMany()
-        .then(trainers => res.status(200).json(trainers))
-        .catch(err => res.status(400).json({"error":err}));
+    async deleteAll(req, res){
+        try {
+            await Trainer.deleteMany({}); // Delete all records/documents in the Trainer collection
+            res.json({ message: 'All trainers deleted successfully.' });
+        }catch (err) {
+            res.status(500).json({ message: err.message });
+        }
+    }
+
+    async findAllNames(req, res){
+        try{
+            const trainers = await Trainer.find()
+            res.json(trainers);
+        }catch(error){
+            res.status(500).json({ message: err.message });
+        } 
+    }
+
+    async findAvailableDates(req, res){
+        const trainerId = req.params.id;
+        console.log('Requested Trainer ID:', trainerId);
+        try{
+            const trainer = await Trainer.findById(trainerId);
+            if(!trainer){
+                return res.status(404).json({ message: 'Trainer not found' });
+            }
+
+            const availableDates = trainer.availableDates.map(date => ({
+                date: date.date,
+                timeSlots: date.timeSlots
+            }));
+
+            res.status(200).json({ availableDates });
+
+        }catch(error){
+            res.status(500).json({ message: error.message });
+        }
     }
 }
 

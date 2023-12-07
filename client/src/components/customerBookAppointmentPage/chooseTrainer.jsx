@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
 import { TrainerNameContext } from "../pages/customerBookAppointmentPage";
+import axios from 'axios';
+import React, { useContext, useState, useEffect } from "react";
 
 const ChooseTrainer = ({ onTrainerChange }) => {
   const { setTrainerName } = useContext(TrainerNameContext);
-
-  const trainerList = [
+  const [trainerList, setTrainerList] = useState([]);
+  
+  /*const trainerList = [
     // This is a dummy list of trainers. Replace it with a list of trainers from the database.
     { name: "Olivia Bennett", id: 1 },
     { name: "Ethan Walker", id: 2 },
@@ -16,7 +18,24 @@ const ChooseTrainer = ({ onTrainerChange }) => {
     { name: "Noah Clark", id: 8 },
     { name: "Isabella Lewis", id: 9 },
     { name: "Aiden Robinson", id: 10 },
-  ];
+  ];*/
+
+  useEffect(() => {
+    const trainers = async () => {
+      try{
+        const response = await axios.get("http://localhost:4000/trainers");
+        const options = response.data.map((trainer) => ({
+          id: trainer._id,
+          value: trainer.firstName
+        }));
+        setTrainerList(options);
+      }catch(error){
+        console.error("Error fetching trainers:", error);
+      }
+    };
+    trainers();
+  }, []);
+
 
   const handleTrainerChange = (event) => {
     const selectedTrainer = event.target.value;
@@ -34,8 +53,8 @@ const ChooseTrainer = ({ onTrainerChange }) => {
         >
           <option value="">Choose a Trainer</option>
           {trainerList.map((trainer) => (
-            <option key={trainer.id} value={trainer.name}>
-              {trainer.name}
+            <option key={trainer.id} value={trainer.value}>
+              {trainer.value}
             </option>
           ))}
         </select>

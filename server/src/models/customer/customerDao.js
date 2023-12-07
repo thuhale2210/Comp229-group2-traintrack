@@ -35,6 +35,26 @@ class CustomerDao{
         .then(products => res.status(200).json(products))
         .catch(err => res.status(400).json({"error":err}));
     }
+
+    async getName(req, res){
+        const customerId = req.params.id;
+        try {
+            // Replace this with your actual database query method
+            const customer = await Customer.findById(customerId) // Example: using Mongoose for MongoDB
+        
+            if (!customer) {
+              return res.status(404).json({ message: 'User not found' });
+            }
+        
+            // Assuming 'name' is a field in your user schema
+            const customerName = customer.firstName + ' ' + customer.lastName;
+        
+            return res.status(200).json({ name: customerName });
+          } catch (error) {
+            return res.status(500).json({ message: 'Error fetching user name', error: error.message });
+          }
+
+    }
 }
 
 module.exports = CustomerDao;

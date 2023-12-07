@@ -22,7 +22,6 @@ const AppointmentPage = () => {
       duration: 60,
       specialRequest: 'N/A',
     },
-    // Add more upcoming appointments as needed
   ];
 
   const workoutHistory = [
@@ -58,20 +57,19 @@ const AppointmentPage = () => {
       duration: 60,
       specialRequest: 'N/A',
     },
-    // Add more workout history entries as needed
   ];
 
   return (
     <>
       <NavBar />
-      <div className='flex flex-col'>
-        <div className="mt-8">
-          <div className="flex bg-gray-200 rounded-lg p-4 mb-4">
-            <UpcomingSchedule upcomingAppointments={upcomingAppointments} />
-          </div>
-          <div className="flex bg-gray-200 rounded-lg p-4">
-            <WorkoutHistory workoutHistory={workoutHistory} />
-          </div>
+      <div className='flex flex-col w-screen'>
+        <div className="mt-5">
+          <p className='text-base font-bold py-3 text-left ml-5'>Upcoming Schedule</p>
+          <UpcomingSchedule upcomingAppointments={upcomingAppointments} />
+        </div>
+        <div className="mt-5">
+          <p className='text-base font-bold  py-3 text-left ml-5'>Workout History</p>
+          <WorkoutHistory workoutHistory={workoutHistory} />
         </div>
       </div>
     </>

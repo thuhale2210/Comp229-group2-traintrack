@@ -1,24 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import NavBar from '../customerNavBar'
-import { Button } from '../components'
+import { BookButton } from '../components'
+import HomeHeroBannerImage from '../../images/home-banner.jpeg';
 
 const CustomerHomePage = () => {
   return (
     <>
       <NavBar />
-      {/* These divs are temporary. Gonna be replaced with the actual components. */}
-      <div className='h-screen'>
-        <div className='bg-secondary-gray w-screen h-1/2 mt-20 text-base'>
-          Hero Banner
-        </div>
-        <div className='w-screen h-1/3 flex mt-5'>
-          <div className='w-5/6 bg-secondary-gray text-base'>
-            Upcoming Appointments
-          </div>
-          <div className='w-1/6'>
+      <div className='h-screen relative'>
+        <img src={HomeHeroBannerImage} alt="hero-banner" className="w-screen h-full object-cover" />
+        <div className='flex flex-col items-start text-md-right absolute top-1/2 left-0 ml-10'>
+          <p className="font-bold text-primary-white text-[70px] my-3 leading-snug">
+            READY TO GET FIT?
+          </p>
+          <p className="text-lg my-3 text-primary-white">
+            Book an appointment with us<br />and achieve your fitness goals today!
+          </p>
+          <div className="my-3 text-base">
             <Link to='/home/book-appointment'>
-              <Button label='Book Appointment' className='rounded-full'>Book Appointment</Button>
+              <BookButton label='Book Appointment'>Book Appointment</BookButton>
             </Link>
           </div>
         </div>

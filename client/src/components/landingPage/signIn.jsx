@@ -2,6 +2,8 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { Button } from '../components';
+import { useHistory, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 
 const SignIn = ({ signIn }) => {
 	const formik = useFormik({
@@ -17,12 +19,18 @@ const SignIn = ({ signIn }) => {
 		}),
 	});
 
+	const navigate = useNavigate();
+
 	const handleSignIn = () => {
 		//console.log(formik.values);
         
 		axios
 			.post('http://localhost:4000/login', formik.values)
-			.then((res) => console.log(res.data))
+			.then((res) => {
+				console.log(res.data);
+				sessionStorage.setItem('userId', res.data.userId);
+				navigate('/home');
+			})
 			.catch((err) => console.log(err));
 	};
 
