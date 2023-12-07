@@ -1,7 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import NavBar from "../customerNavBar";
 import TempAvatar from "../../images/temp_avatar.png";
 import LogOut from "../../images/logout.png";
+
+import axios from "axios";
 
 const CustomerHome = () => {
   const [name, setName] = useState("")
@@ -22,6 +24,23 @@ const CustomerHome = () => {
   const [hipCircUnit, setHipCircUnit] = useState("in")
   const [uploadedImage, setUploadedImage] = useState(TempAvatar);
   const fileInputRef = useRef(null);
+
+  const [customerName, setCustomerName] = useState('');
+
+  useEffect(() => {
+    // Fetch the ID from sessionStorage
+    const customerId = sessionStorage.getItem('userId');
+
+    // Make an API call to get the name based on the ID
+    axios.get(`http://localhost:4000/customer/${customerId}/name`)
+      .then((response) => {
+        // Assuming the response.data has a 'name' property
+        setCustomerName(response.data.name);
+      })
+      .catch((error) => {
+        console.error('Error fetching name:', error);
+      });
+  }, []);
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -74,19 +93,20 @@ const CustomerHome = () => {
   return (
     <>
       <NavBar />
-      <body className="overflow-auto bg-gray-200">
-        <div className="pt-8 px-[130px]">
-          <h3 className="pt-20 font-bold underline text-3xl">Profile:</h3>
+      <div className="w-screen">
+        <div className="pt-8">
+          <h3 className="pt-20 font-bold text-xl">Profile</h3>
         </div>
-        <div className="pt-5 px-[150px] flex items-center">
+        <div className="w-screen ">
+        <div className="pt-5 flex items-center">
           <div className="flex items-center space-x-4 p-10">
             <img
               src={uploadedImage}
               alt="Proile Picture"
-              className="rounded-full w-32 h-32 object-cover"
+              className="rounded-full w-24 h-24 object-cover"
               onClick={handleImageClick}
             />
-            <span className="font-semibold text-gray-800 text-xl">Joe Smith</span>
+            <span className="font-semibold text-gray-800 text-base">{customerName}</span>
           </div>
           <input
             type="file"
@@ -95,13 +115,13 @@ const CustomerHome = () => {
             style={{ display: 'none' }}
           />
         </div>
-        <div className="pt-5 px-[150px]">
-          <span className="font-bold text-3xl underline cursor-default">Your profile:</span>
+        <div className="pt-5 px-[150px] flex">
+          <span className="font-bold text-xl cursor-default">Your profile</span>
         </div>
         <div className="pt-5 px-[150px] flex flex-wrap space-x-10">
           <div className="flex-1">
             <div className="flex items-center space-x-4 mb-6">
-              <span className="font-bold cursor-default">Name: Joe Smith</span>
+              <span className="font-bold cursor-default">Name: {customerName}</span>
             </div>
             <div className="flex items-center space-x-4 mb-6">
               <span className="font-bold cursor-default">Age: 20</span>
@@ -134,7 +154,7 @@ const CustomerHome = () => {
             </div>
           </div>
 
-          <div className="flex-1 border-black border p-10 -mt-28 mb-12 h-auto">
+          {/* <div className="flex-1 border-black border p-10 -mt-28 mb-12 h-auto">
             <h3 className="font-bold text-3xl mb-3 underline">Edit your Profile:</h3>
             <div className="flex items-center space-x-4 mb-6">
               <span className="font-bold">Name:</span>
@@ -280,10 +300,11 @@ const CustomerHome = () => {
               </button>
               </div>
             </div>
-          </div>
+          </div> */}
 
         </div>
-      </body>
+        </div>
+      </div>
     </>
   );
 };
