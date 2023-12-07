@@ -48,8 +48,8 @@ class TrainerDao{
 
     async findAllNames(req, res){
         try{
-            const trainerNames = await Trainer.find({}, 'firstName')
-            res.json(trainerNames);
+            const trainers = await Trainer.find()
+            res.json(trainers);
         }catch(error){
             res.status(500).json({ message: err.message });
         } 

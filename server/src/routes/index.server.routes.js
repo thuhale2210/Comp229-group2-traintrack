@@ -17,7 +17,7 @@ router.route('/login').post((req, res) => {
     accountController.login(req, res);
 });
 
-router.route('/trainerNames').get((req, res) => {
+router.route('/trainers').get((req, res) => {
     trainerController.getAllTrainerNames(req, res);
 });
 
