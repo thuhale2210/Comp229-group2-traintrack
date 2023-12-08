@@ -37,19 +37,18 @@ router.route('/addTrainer').post((req, res) => {
 
 router.route('/customer/:id/name').get((req, res) => {
     customerController.getCustomerName(req, res);
-})
+});
 
 router.route('/customer/appointment').post((req, res) => {
     customerController.setAppointment(req, res);
-})
+});
 
 router.route('/customers').get((req, res) => {
     customerDao.findAll(req, res);
-})
+});
 
-
-
-
-
+router.route('/customer/:id/email').get((req, res) => {
+    customerController.getCustomerEmail(req, res);
+});
 
 module.exports = router;

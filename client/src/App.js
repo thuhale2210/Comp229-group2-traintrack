@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     // Check the current route and apply styles accordingly
-    if ((location.pathname === '/home') || (location.pathname === '/appointment') || (location.pathname === '/profile')) {
+    if ((location.pathname === '/home') || (location.pathname === '/appointment')) {
       document.body.classList.add('overflow-hidden');
     } else {
       document.body.classList.remove('overflow-hidden');
