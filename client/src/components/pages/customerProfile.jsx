@@ -25,8 +25,6 @@ const CustomerHome = () => {
   const [uploadedImage, setUploadedImage] = useState(TempAvatar);
   const fileInputRef = useRef(null);
 
-  const [customerName, setCustomerName] = useState('');
-
   useEffect(() => {
     // Fetch the ID from sessionStorage
     const customerId = sessionStorage.getItem('userId');
@@ -34,11 +32,28 @@ const CustomerHome = () => {
     // Make an API call to get the name based on the ID
     axios.get(`http://localhost:4000/customer/${customerId}/name`)
       .then((response) => {
-        // Assuming the response.data has a 'name' property
-        setCustomerName(response.data.name);
+        setName(response.data.name);
       })
       .catch((error) => {
         console.error('Error fetching name:', error);
+      });
+
+    // Make an API call to get the age based on the ID
+    axios.get(`http://localhost:4000/customer/${customerId}/age`)
+      .then((response) => {
+        setAge(response.data.age);
+      })
+      .catch((error) => {
+        console.error('Error fetching age:', error);
+      });
+
+    // Make an API call to get the email based on the ID
+    axios.get(`http://localhost:4000/customer/${customerId}/email`)
+      .then((response) => {
+        setEmail(response.data.email);
+      })
+      .catch((error) => {
+        console.error('Error fetching email:', error);
       });
   }, []);
 
@@ -52,7 +67,6 @@ const CustomerHome = () => {
     fileInputRef.current.click();
   };
   const handleFormSubmit = () => {
-
     const formData = { name, age, email, phone, noofTraining, weightLoss, weight, weightUnit, height, heightUnit, neckCirc, neckCircUnit, waistCirc, waistCircUnit, hipCirc, hipCircUnit }
     const updatedFormData = {
       name,
@@ -106,7 +120,7 @@ const CustomerHome = () => {
               className="rounded-full w-24 h-24 object-cover"
               onClick={handleImageClick}
             />
-            <span className="font-semibold text-gray-800 text-base">{customerName}</span>
+            <span className="font-semibold text-gray-800 text-base">{name}</span>
           </div>
           <input
             type="file"
@@ -121,35 +135,35 @@ const CustomerHome = () => {
         <div className="pt-5 px-[150px] flex flex-wrap space-x-10">
           <div className="flex-1">
             <div className="flex items-center space-x-4 mb-6">
-              <span className="font-bold cursor-default">Name: {customerName}</span>
+              <span className="font-bold cursor-default">Name: {name}</span>
             </div>
             <div className="flex items-center space-x-4 mb-6">
-              <span className="font-bold cursor-default">Age: 20</span>
+              <span className="font-bold cursor-default">Age: {age}</span>
 
             </div>
             <div className="flex items-center space-x-4 mb-6">
-              <span className="font-bold cursor-default">Email: joe@gmail.com</span>
+              <span className="font-bold cursor-default">Email: {email}</span>
 
             </div>
             <div className="flex items-center space-x-4 mb-6">
-              <span className="font-bold cursor-default">Phone Number: +12321234567</span>
+              <span className="font-bold cursor-default">Phone Number: {phone}</span>
 
             </div>
             <div className="flex items-center space-x-4 mb-6">
-              <span className="font-bold cursor-default">Weight: 75 kg</span>
+              <span className="font-bold cursor-default">Weight: {weight}</span>
             </div>
             <div className="flex items-center space-x-4 mb-6">
-              <span className="font-bold cursor-default">Height: 150 cm</span>
+              <span className="font-bold cursor-default">Height: {height}</span>
             </div>
             <div className="mt-[40px] mb-6">
               <span className="font-bold text-2xl underline cursor-default">Your fitness goal:</span>
             </div>
             <div className="flex items-center space-x-4 mb-6">
-              <span className="font-bold cursor-default">Trainings to complete: 3</span>
+              <span className="font-bold cursor-default">Trainings to complete: {noofTraining}</span>
 
             </div>
             <div className="flex items-center space-x-4 mb-6">
-              <span className="font-bold cursor-default">Targeted weight loss (in kg): 20</span>
+              <span className="font-bold cursor-default">Targeted weight loss (in kg): {weightLoss}</span>
 
             </div>
           </div>

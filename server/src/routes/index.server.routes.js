@@ -35,11 +35,10 @@ router.route('/addTrainer').post((req, res) => {
 
 router.route('/customer/:id/name').get((req, res) => {
     customerController.getCustomerName(req, res);
-})
+});
 
-
-
-
-
+router.route('/customer/:id/email').get((req, res) => {
+    customerController.getCustomerEmail(req, res);
+});
 
 module.exports = router;

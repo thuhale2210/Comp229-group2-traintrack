@@ -39,21 +39,63 @@ class CustomerDao{
     async getName(req, res){
         const customerId = req.params.id;
         try {
-            // Replace this with your actual database query method
-            const customer = await Customer.findById(customerId) // Example: using Mongoose for MongoDB
+            const customer = await Customer.findById(customerId)
         
             if (!customer) {
               return res.status(404).json({ message: 'User not found' });
             }
         
-            // Assuming 'name' is a field in your user schema
             const customerName = customer.firstName + ' ' + customer.lastName;
         
             return res.status(200).json({ name: customerName });
           } catch (error) {
             return res.status(500).json({ message: 'Error fetching user name', error: error.message });
           }
+    }
 
+    async getAge(req, res){
+        const customerId = req.params.id;
+        try {
+            const customer = await Customer.findById(customerId)
+        
+            if (!customer) {
+              return res.status(404).json({ message: 'User not found' });
+            }
+                
+            return res.status(200).json({ age: customer.age });
+          } catch (error) {
+            return res.status(500).json({ message: 'Error fetching user age', error: error.message });
+          }
+    }
+
+    async getAge(req, res){
+        const customerId = req.params.id;
+        try {
+            const customer = await Customer.findById(customerId)
+        
+            if (!customer) {
+              return res.status(404).json({ message: 'User not found' });
+            }
+                
+            return res.status(200).json({ age: customer.age });
+          } catch (error) {
+            return res.status(500).json({ message: 'Error fetching user age', error: error.message });
+          }
+    }
+
+    async getEmail(req, res){
+        const customerId = req.params.id;
+        try {
+            const customer = await Customer.findById(customerId)
+        
+            if (!customer) {
+              return res.status(404).json({ message: 'User not found' });
+            }
+            
+            return res.status(200).json({ email: customer.email });
+          } catch (error) {
+            return res.status(500).json({ message: 'Error fetching user email', error: error.message });
+          }
     }
 }
 

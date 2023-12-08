@@ -19,6 +19,24 @@ let Customer = new Schema({
     },
     role:{
         type:String
+    },
+    age:{
+        type:Number
+    },
+    phone:{
+        type:Number
+    },
+    numberOfTrainingSessionsToComplete: {
+        type:Number
+    },
+    targetedWeight: {
+        type:Number
+    },
+    currentWeight: {
+        type:Number
+    },
+    currentHeight: {
+        type:Number
     }
 });
 
