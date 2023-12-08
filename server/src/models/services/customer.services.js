@@ -10,6 +10,10 @@ class CustomerService{
         this.customerDao.getName(req, res);
     }
 
+    async setAppointment(req, res){
+        this.customerDao.saveAppointment(req, res);
+    }
+
 
 }
 

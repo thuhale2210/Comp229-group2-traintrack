@@ -3,11 +3,13 @@ const router = express.Router();
 const AccountController = require('../controllers/index.account.controller');
 const TrainerController = require('../controllers/index.trainer.controller');
 const CustomerController = require('../controllers/index.customer.controller');
+const CustomerDao = require('../models/customer/customerDao');
 
 
 const accountController = new AccountController();
 const trainerController = new TrainerController();
 const customerController = new CustomerController();
+const customerDao = new CustomerDao();
 
 router.route('/addAccount').post((req, res) => {
     accountController.addAccount(req, res);
@@ -35,6 +37,14 @@ router.route('/addTrainer').post((req, res) => {
 
 router.route('/customer/:id/name').get((req, res) => {
     customerController.getCustomerName(req, res);
+})
+
+router.route('/customer/appointment').post((req, res) => {
+    customerController.setAppointment(req, res);
+})
+
+router.route('/customers').get((req, res) => {
+    customerDao.findAll(req, res);
 })
 
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as Components from '../components';
 import { Dialog, DialogHeader, DialogBody, DialogFooter } from "@material-tailwind/react";
 import AppointmentForm from './appointmentForm';
+import axios from 'axios';
 
 const AppointmentDetails = ({ chosenDateTime, onChangeAppointment, trainerName }) => {
     const [open, setOpen] = useState(false);
@@ -13,14 +14,33 @@ const AppointmentDetails = ({ chosenDateTime, onChangeAppointment, trainerName }
 
     // Handle appointment confirmation
     const handleConfirmAppointment = () => {
-        // Handle appointment confirmation logic. For now, just log the appointment details
-        console.log('Confirmed Date and Time:', chosenDateTime);
-        console.log('Confirmed Trainer:', trainerName);
-        console.log('Confirmed Focus Area:', chosenFocusArea);
-        console.log('Confirmed Special Request:', chosenSpecialRequest);
-        handleOpen();
-        window.location.href = '/appointment';
-        window.alert('Appointment confirmed!');
+        // Construct the data object
+        const appointmentData = {
+            userId: sessionStorage.getItem('userId'),
+            dateAndTime: chosenDateTime,
+            trainer: trainerName,
+            focusArea: localStorage.getItem('focusArea'), // Retrieve focusArea from localStorage
+            specialRequest: chosenSpecialRequest
+        };
+
+        // Make a POST request to send appointmentData to the server
+        axios.post("http://localhost:4000/customer/appointment", appointmentData)
+        .then(response => {
+            // Handle successful response
+            console.log('Appointment confirmed!', response.data);
+            handleOpen();
+            window.location.href = '/appointment';
+            window.alert('Appointment confirmed!');
+        })
+        .catch(error => {
+            // Handle error
+            console.error('Error confirming appointment:', error);
+            // Optionally handle errors with an alert or other UI feedback
+        });
+
+        //handleOpen();
+        //window.location.href = '/appointment';
+        //window.alert('Appointment confirmed!');
     };
 
     return (

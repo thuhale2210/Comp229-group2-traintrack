@@ -1,6 +1,18 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+let DateAndTime = new Schema({
+    start: {type: Date},
+    end: {type: Date}
+})
+
+let appointment = new Schema({
+    dateAndTime: {type: DateAndTime},
+    trainer: {type: String},
+    focusArea: {type: String},
+    specialRequest: {type: String}
+})
+
 let Customer = new Schema({ 
     firstName: {
         type:String
@@ -19,7 +31,8 @@ let Customer = new Schema({
     },
     role:{
         type:String
-    }
+    },
+    appointments: [appointment]
 });
 
 

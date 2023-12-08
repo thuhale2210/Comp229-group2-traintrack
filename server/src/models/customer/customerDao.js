@@ -55,6 +55,53 @@ class CustomerDao{
           }
 
     }
+
+    async saveAppointment(req, res){
+        const {userId, dateAndTime, trainer, focusArea, specialRequest} = req.body;
+        try {
+            // Create a new appointment object
+            const newAppointment = {
+                dateAndTime: {
+                    start: new Date(dateAndTime.start),
+                    end: new Date(dateAndTime.end)
+                },
+                trainer: trainer,
+                focusArea: focusArea,
+                specialRequest: specialRequest
+            };
+    
+            // Find the customer by userId
+            const customer = await Customer.findById(userId);
+    
+            if (!customer) {
+                return res.status(404).json({ error: 'Customer not found' });
+            }
+    
+            // Add the new appointment to the appointments array
+            customer.appointments.push(newAppointment);
+    
+            // Save the updated customer document
+            await customer.save();
+    
+            res.status(200).json({ message: 'Appointment added successfully' });
+        } catch (error) {
+            console.error('Error saving appointment:', error);
+            res.status(500).json({ error: 'Failed to add appointment' });
+        }
+    }
+
+    async findAll(req, res){
+        try {
+            // Fetch all customers from the database
+            const allCustomers = await Customer.find();
+    
+            // Respond with the retrieved customers
+            res.status(200).json(allCustomers);
+        } catch (error) {
+            console.error('Error fetching customers:', error);
+            res.status(500).json({ error: 'Failed to fetch customers' });
+        }
+    }
 }
 
 module.exports = CustomerDao;

@@ -3,10 +3,7 @@ import NavBar from "../customerNavBar";
 import TempAvatar from "../../images/temp_avatar.png";
 import Footer from "../footer";
 import LogOut from "../../images/logout.png";
-<<<<<<< HEAD
-=======
 import axios from 'axios';
->>>>>>> cb3e6e4185f76951fd8fb6894ea006968f30bda4
 
 const CustomerHome = () => {
   const [name , setName] = useState("")

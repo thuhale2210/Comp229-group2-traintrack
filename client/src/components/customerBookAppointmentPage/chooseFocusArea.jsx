@@ -10,6 +10,8 @@ const ChooseFocusArea = ({onChange}) => {
     const handleFocusAreaChange = (event) => {
         const selectedFocusArea = event.target.value;
         console.log(selectedFocusArea);
+        localStorage.setItem('focusArea', selectedFocusArea);
+        console.log(localStorage.getItem('focusArea'));
     };
 
     return (

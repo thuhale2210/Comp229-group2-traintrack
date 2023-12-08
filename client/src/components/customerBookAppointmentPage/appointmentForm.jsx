@@ -10,6 +10,7 @@ const AppointmentForm = ({ chosenDateTime, trainerName, setChosenFocusArea, setC
         setFocusArea(focusArea);
         setChosenFocusArea(focusArea);
         console.log(focusArea);
+        
     };
 
     // Handle special request change
