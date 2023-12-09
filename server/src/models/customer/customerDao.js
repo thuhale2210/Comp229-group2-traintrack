@@ -144,6 +144,84 @@ class CustomerDao{
             res.status(500).json({ error: 'Failed to fetch customers' });
         }
     }
+
+    async findAllUpcomingAppointments(req, res){
+        const customerId = req.params.id;
+
+        try {
+            const customer = await Customer.findById(customerId);
+
+            if (!customer) {
+                return res.status(404).json({ error: 'Customer not found' });
+            }
+
+            const currentDateTime = new Date();
+            const upcomingAppointments = customer.appointments.filter(appointment => {
+                return appointment.dateAndTime.start > currentDateTime;
+            });
+
+            // Transforming appointments to the specified format
+            const formattedAppointments = upcomingAppointments.map(appointment => {
+                const start = new Date(appointment.dateAndTime.start);
+                const end = new Date(appointment.dateAndTime.end);
+
+                const duration = Math.round((end - start) / (1000 * 60)); // Calculate duration in minutes
+
+                return {
+                    date: start.toLocaleDateString('en-US'),
+                    time: start.toLocaleTimeString('en-US', { timeStyle: 'short' }),
+                    focusArea: appointment.focusArea,
+                    trainer: appointment.trainer,
+                    duration: duration,
+                    specialRequest: appointment.specialRequest || 'N/A'
+                };
+            });
+
+            res.status(200).json(formattedAppointments);
+        } catch (error) {
+            console.error('Error fetching appointments:', error);
+            res.status(500).json({ error: 'Failed to fetch appointments' });
+        }
+    }
+
+    async findWorkoutHistory(req, res){
+        const customerId = req.params.id;
+
+        try {
+            const customer = await Customer.findById(customerId);
+
+            if (!customer) {
+                return res.status(404).json({ error: 'Customer not found' });
+            }
+
+            const currentDateTime = new Date();
+            const upcomingAppointments = customer.appointments.filter(appointment => {
+                return appointment.dateAndTime.start <= currentDateTime;
+            });
+
+            // Transforming appointments to the specified format
+            const formattedAppointments = upcomingAppointments.map(appointment => {
+                const start = new Date(appointment.dateAndTime.start);
+                const end = new Date(appointment.dateAndTime.end);
+
+                const duration = Math.round((end - start) / (1000 * 60)); // Calculate duration in minutes
+
+                return {
+                    date: start.toLocaleDateString('en-US'),
+                    time: start.toLocaleTimeString('en-US', { timeStyle: 'short' }),
+                    focusArea: appointment.focusArea,
+                    trainer: appointment.trainer,
+                    duration: duration,
+                    specialRequest: appointment.specialRequest || 'N/A'
+                };
+            });
+
+            res.status(200).json(formattedAppointments);
+        } catch (error) {
+            console.error('Error fetching appointments:', error);
+            res.status(500).json({ error: 'Failed to fetch appointments' });
+        }
+    }
 }
 
 module.exports = CustomerDao;

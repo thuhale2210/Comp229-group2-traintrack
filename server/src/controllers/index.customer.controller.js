@@ -12,6 +12,14 @@ class CustomerController{
     setAppointment(req, res){
         this.customerService.setAppointment(req, res);
     }
+
+    getUpcomingSchedule(req, res){
+        this.customerService.getUpcomingSchedule(req, res);
+    }
+
+    getWorkoutHistory(req, res){
+        this.customerService.getWorkoutHistory(req, res);
+    }
 }
 
 module.exports = CustomerController;

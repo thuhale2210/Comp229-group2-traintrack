@@ -1,11 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import NavBar from '../customerNavBar';
 import UpcomingSchedule from '../customerAppointmentPage/UpcomingSchedule';
 import WorkoutHistory from '../customerAppointmentPage/WorkoutHistory';
 
 const AppointmentPage = () => {
+  const customerId = sessionStorage.getItem('userId');
+  
+  const [upcomingAppointments, setUpcomingAppointments] = useState([]);
+  const [workoutHistory, setWorkoutHistory] = useState([]);
+
+  useEffect(() => {
+    // Fetch upcoming appointments
+    axios.get(`http://localhost:4000/customer/${customerId}/upcomingSchedule`)
+      .then(response => {
+        console.log('Upcoming Schedule:', response.data);
+        setUpcomingAppointments(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching upcoming appointments:', error);
+      });
+
+    // Fetch workout history
+    axios.get(`http://localhost:4000/customer/${customerId}/workoutHistory`)
+      .then(response => {
+        console.log('Workout History:', response.data);
+        setWorkoutHistory(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching workout history:', error);
+      });
+  }, [customerId]); // Fetch data when customerId changes
   // Mock data for testing
-  const upcomingAppointments = [
+  /*const upcomingAppointments = [
     {
       date: '11/13/2023',
       time: '8:00 AM',
@@ -57,7 +84,7 @@ const AppointmentPage = () => {
       duration: 60,
       specialRequest: 'N/A',
     },
-  ];
+  ];*/
 
   return (
     <>

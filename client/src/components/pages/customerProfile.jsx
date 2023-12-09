@@ -2,12 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import NavBar from "../customerNavBar";
 import TempAvatar from "../../images/temp_avatar.png";
 import LogOut from "../../images/logout.png";
-<<<<<<< HEAD
 import axios from 'axios';
-=======
-
-import axios from "axios";
->>>>>>> b85aa275e070dafcabf63047524f1ae9041ed16a
 
 const CustomerHome = () => {
   const [name, setName] = useState("")

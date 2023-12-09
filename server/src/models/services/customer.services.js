@@ -14,6 +14,14 @@ class CustomerService{
         this.customerDao.saveAppointment(req, res);
     }
 
+    async getUpcomingSchedule(req, res){
+        this.customerDao.findAllUpcomingAppointments(req, res);
+    }
+
+    async getWorkoutHistory(req, res){
+        this.customerDao.findWorkoutHistory(req, res);
+    }
+
 
 }
 

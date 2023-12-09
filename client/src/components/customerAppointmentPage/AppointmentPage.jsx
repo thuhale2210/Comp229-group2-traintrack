@@ -1,66 +1,38 @@
-// AppointmentPage.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import UpcomingSchedule from './UpcomingSchedule';
 import WorkoutHistory from './WorkoutHistory';
 
 const AppointmentPage = () => {
-  // Mock data for testing
-  const upcomingAppointments = [
-    {
-      date: '11/13/2023',
-      time: '8:00 AM',
-      focusArea: 'Core',
-      trainer: 'David',
-      duration: 60,
-      specialRequest: 'N/A',
-    },
-    {
-      date: '11/11/2023',
-      time: '8:00 AM',
-      focusArea: 'Upper body',
-      trainer: 'David',
-      duration: 60,
-      specialRequest: 'N/A',
-    },
-  ];
+  const customerId = sessionStorage.getItem('userId');
+  
+  const [upcomingAppointments, setUpcomingAppointments] = useState([]);
+  const [workoutHistory, setWorkoutHistory] = useState([]);
 
-  const workoutHistory = [
-    {
-      date: '11/08/2023',
-      time: '8:30 PM',
-      focusArea: 'Lower body',
-      trainer: 'Self-training',
-      duration: 30,
-      specialRequest: 'N/A',
-    },
-    {
-      date: '11/04/2023',
-      time: '8:00 AM',
-      focusArea: 'Core',
-      trainer: 'David',
-      duration: 60,
-      specialRequest: 'N/A',
-    },
-    {
-      date: '11/01/2023',
-      time: '8:30 PM',
-      focusArea: 'Lower body',
-      trainer: 'Self-training',
-      duration: 30,
-      specialRequest: 'N/A',
-    },
-    {
-      date: '10/29/2023',
-      time: '8:00 AM',
-      focusArea: 'Upper body',
-      trainer: 'David',
-      duration: 60,
-      specialRequest: 'N/A',
-    },
-  ];
+  useEffect(() => {
+    // Fetch upcoming appointments
+    axios.get(`http://localhost:4000/customer/${customerId}/upcomingSchedule`)
+      .then(response => {
+        console.log('Upcoming Schedule:', response.data);
+        setUpcomingAppointments(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching upcoming appointments:', error);
+      });
+
+    // Fetch workout history
+    axios.get(`http://localhost:4000/customer/${customerId}/workoutHistory`)
+      .then(response => {
+        console.log('Workout History:', response.data);
+        setWorkoutHistory(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching workout history:', error);
+      });
+  }, [customerId]); // Fetch data when customerId changes
 
   return (
-    <div className="mt-8 flex flex-col items-center"> {/* Use Flexbox to stack components vertically */}
+    <div className="mt-8 flex flex-col items-center">
       <div className="bg-gray-200 rounded-lg p-4 mb-4">
         <UpcomingSchedule upcomingAppointments={upcomingAppointments} />
       </div>

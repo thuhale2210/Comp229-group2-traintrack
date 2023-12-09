@@ -51,4 +51,12 @@ router.route('/customer/:id/email').get((req, res) => {
     customerController.getCustomerEmail(req, res);
 });
 
+router.route('/customer/:id/upcomingSchedule').get((req, res) =>{
+    customerController.getUpcomingSchedule(req, res);
+});
+
+router.route('/customer/:id/workoutHistory').get((req, res) => {
+    customerController.getWorkoutHistory(req, res);
+});
+
 module.exports = router;

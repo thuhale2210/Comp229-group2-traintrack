@@ -21,7 +21,7 @@ const UpcomingSchedule = ({ upcomingAppointments }) => {
               <td className="py-5 px-4">{`${appointment.time} `}</td>
               <td className="py-5 px-4">{appointment.focusArea}</td>
               <td className="py-5 px-4">{appointment.trainer}</td>
-              <td className="py-5 px-4">{`${appointment.duration} hour${appointment.duration > 1 ? 's' : ''}`}</td>
+              <td className="py-5 px-4">{`${appointment.duration} minute${appointment.duration > 1 ? 's' : ''}`}</td>
               <td className="py-5 px-4">{appointment.specialRequest}</td>
             </tr>
           ))}
