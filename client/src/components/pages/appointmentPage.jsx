@@ -64,16 +64,19 @@ const AppointmentPage = () => {
       <NavBar />
       <div className='flex flex-col w-screen'>
         <div className="mt-5">
-          <p className='text-base font-bold py-3 text-left ml-5'>Upcoming Schedule</p>
-          <UpcomingSchedule upcomingAppointments={upcomingAppointments} />
+          <p className='text-base font-bold py-5 text-left ml-10'>Upcoming Schedule</p>
+          <div className="mx-20 rounded-xl bg-white shadow-md">
+            <UpcomingSchedule upcomingAppointments={upcomingAppointments} />
+          </div>
         </div>
         <div className="mt-5">
-          <p className='text-base font-bold  py-3 text-left ml-5'>Workout History</p>
-          <WorkoutHistory workoutHistory={workoutHistory} />
+          <p className='text-base font-bold py-5 text-left ml-10'>Workout History</p>
+          <div className="mx-20 rounded-xl bg-white shadow-md">
+            <WorkoutHistory workoutHistory={workoutHistory} />
+          </div>
         </div>
       </div>
     </>
-
   );
 };
 

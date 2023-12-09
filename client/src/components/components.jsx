@@ -53,6 +53,7 @@ export const Form = styled.form`
 `;
 
 export const Title = styled.h1`
+    font-size: 24px;
     font-weight: bold;
     margin: 0;
 `;
@@ -80,7 +81,7 @@ export const Button = styled.button`
     color: #FFFFFF;
     font-size: 12px;
     font-weight: bold;
-    margin: 0 0;
+    margin: 10px 0;
     padding: 13px 40px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -180,6 +181,30 @@ export const BookButton = styled.button`
     }
 `;
 
+export const CancelButton = styled.button`
+    border-radius: 20px;
+    border: 2px solid #FF4B2B;
+    background-color: none;
+    color: #FF4B2A;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    &:hover {
+        background-color: #FF4B2B;
+        color: #FFFFFF;
+        transform: scale(1.05);
+    }
+    &:active {
+        transform: scale(0.95);
+    }
+    &:focus {
+        outline: none;
+    }
+`;
+
 export const GhostButton = styled(Button)`
     background-color: transparent;
     border-color: #ffffff !important;
@@ -250,7 +275,7 @@ export const RightOverlayPanel = styled(OverlayPanel)`
 `;
 export const Paragraph = styled.p`
     font-size: 16px;
-    font-weight: 100;
+    font-weight: 200;
     line-height: 20px;
     letter-spacing: 0.5px;
     margin: 20px 0 30px;
