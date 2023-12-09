@@ -8,6 +8,7 @@ import AppointmentPage from './components/pages/appointmentPage';
 import ExerciseDetail from './components/pages/ExerciseDetail';
 import Exercise from './components/pages/Exercise';
 import CustomerProfile from './components/pages/customerProfile';
+import CustomerEditProfile from './components/pages/customerEditProfile';
 
 function App() {
   const location = useLocation();
@@ -37,6 +38,7 @@ function App() {
           <Route path="/exercise/:id" element={<ExerciseDetail />} />
           <Route path='/appointment' element={<AppointmentPage />} />
           <Route path='/profile' element={<CustomerProfile />} />
+          <Route path='/profile/edit' element={<CustomerEditProfile />} />
         </Routes>
       </header>
     </div>
