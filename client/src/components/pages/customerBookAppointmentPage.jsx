@@ -27,7 +27,7 @@ const BookAppointmentPage = () => {
   };
 
   return (
-    <>
+    <div className="bg-primary-white">
       <NavBar />
       <div className="h-screen flex flex-col">
         <TrainerNameContextProvider>
@@ -52,7 +52,7 @@ const BookAppointmentPage = () => {
           </div>
         </TrainerNameContextProvider>
       </div>
-    </>
+    </div>
   )
 }
 
