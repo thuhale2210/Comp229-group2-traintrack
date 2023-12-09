@@ -1,9 +1,9 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { Button } from '../components';
-import { useHistory, useNavigate } from 'react-router-dom';
-import React, { useState } from 'react';
 
 const SignIn = ({ signIn }) => {
 	const formik = useFormik({
@@ -44,7 +44,7 @@ const SignIn = ({ signIn }) => {
 				className="bg-white flex items-center justify-center flex-col px-10 h-full text-center"
 				onSubmit={formik.handleSubmit}
 			>
-				<h1 className="font-bold m-0">Sign in</h1>
+				<h1 className="font-bold m-0 text-xl">Sign In</h1>
 				<input
 					className="rounded-lg bg-gray-200 border-none p-3 my-2 w-full text-sm"
 					type="email"
@@ -63,7 +63,7 @@ const SignIn = ({ signIn }) => {
 					onChange={formik.handleChange}
 				/>
 				{/* <ErrorMessage className="text-red-500 text-xs" name="password" component="div" /> */}
-				<a className="text-gray-700 text-sm md:text-lg no-underline my-4" href="#">
+				<a className="text-gray-700 text-sm md:text-lg my-4" href="#">
 					Forgot your password?
 				</a>
 				<Button type="submit">
