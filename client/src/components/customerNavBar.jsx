@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import Logo from '../images/logo.png';
-import TempAvatar from '../images/temp_avatar.png';
 
 const NavBar = () => {
   const navLinks = [
@@ -19,6 +18,9 @@ const NavBar = () => {
     }
     return location.pathname.startsWith(match.url);
   };
+
+  // Add logic to get the image from localStorage
+  const uploadedImage = localStorage.getItem('image');
 
   return (
     <>
@@ -41,9 +43,11 @@ const NavBar = () => {
                 </NavLink>
               ))}
             </div>
-            {/* This is a temporary avatar */}
             <li>
-              <img src={TempAvatar} alt="tempAvatar" className="w-[35px] mx-7 my-1" />
+              <img
+                src={uploadedImage ? uploadedImage : "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"}
+                alt="tempAvatar" 
+                className="w-12 mx-7 my-1" />
             </li>
           </ul>
         </nav>

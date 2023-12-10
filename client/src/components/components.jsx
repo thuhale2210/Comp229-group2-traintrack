@@ -113,9 +113,8 @@ export const SecondButton = styled.button`
     }
 `;
 
-export const SearchButton = styled.button`
+export const HoverButton = styled.button`
   border-radius: 20px;
-  background-color: #F6F5F7;
   color: #FF4B2B;
   border: 1px solid #FF4B2B;
   font-size: 12px;

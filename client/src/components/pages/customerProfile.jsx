@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import NavBar from "../customerNavBar";
-import { SecondButton } from "../components";
+import { HoverButton } from "../components";
 import LogOut from "../../images/logout.png";
 import axios from 'axios';
 import { Link } from "react-router-dom";
@@ -13,7 +13,6 @@ const CustomerProfile = () => {
   const [weight, setWeight] = useState("")
   const [height, setHeight] = useState("")
   const [uploadedImage, setUploadedImage] = useState("");
-  const fileInputRef = useRef(null);
 
   useEffect(() => {
     // Fetch the ID from sessionStorage
@@ -29,15 +28,6 @@ const CustomerProfile = () => {
       });
   }, []);
 
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    const imageUrl = URL.createObjectURL(file);
-    setUploadedImage(imageUrl);
-  };
-
-  const handleImageClick = () => {
-    fileInputRef.current.click();
-  };
   const handleFormSubmit = () => {
     const formData = { name, age, email, phone, weight, height }
     const updatedFormData = {
@@ -66,23 +56,16 @@ const CustomerProfile = () => {
     <>
       <NavBar />
       <div className="w-screen h-screen">
-        <h3 className="pt-20 my-7 font-bold text-2xl">Profile</h3>
-        <div className="border rounded-xl mx-20 my-10 flex bg-white shadow-md">
+        <h3 className="pt-20 mt-7 font-bold text-2xl">Profile</h3>
+        <div className="border rounded-xl mx-20 my-5 flex bg-white shadow-md">
           {/* Left Column */}
-          <div className="flex flex-col w-1/3 items-center p-20 mt-20 border-r">
+          <div className="flex flex-col w-1/3 items-center p-20 my-20 border-r">
             <img
               src={uploadedImage ? uploadedImage : "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"}
               alt="Profile"
-              className="rounded-full w-32 h-32 object-cover"
-              onClick={handleImageClick}
+              className="rounded-full w-48 h-48 object-cover"
             />
             <span className="font-bold text-gray-800 text-lg pt-7">{name}</span>
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={handleImageUpload}
-              className="hidden cursor-pointer"
-            />
           </div>
 
           {/* Right Column */}
@@ -121,24 +104,26 @@ const CustomerProfile = () => {
                 </tbody>
               </table>
 
-              <div className="flex justify-end mt-8">
-                <Link to="/profile/edit"><SecondButton>
+              <div className="flex justify-end mt-5">
+                <Link to="/profile/edit"><HoverButton>
                   Edit Your Information
-                </SecondButton></Link>
+                </HoverButton></Link>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex justify-end mr-10 mb-10">
-          <span className="font-bold pt-2 cursor-pointer">Logout &nbsp;</span>
-          <button className="p-2 rounded-full bg-[#D9D9D9] hover:bg-orange-400">
+        <div className="flex justify-end bottom-0 right-0 absolute mr-5 mb-5">
+          <span className="font-bold py-2 cursor-pointer">Log Out &nbsp;</span>
+          <button className="p-2 rounded-full transition-colors duration-300 ease-in-out hover:bg-primary-red">
             <img
               src={LogOut}
-              className="w-6 h-6 bottom-0 right-0"
+              className="w-6 h-6 right-0 object-cover"
               alt="Log Out"
-              onClick={handleLogOut} />
+              onClick={handleLogOut}
+            />
           </button>
+
         </div>
       </div>
     </>

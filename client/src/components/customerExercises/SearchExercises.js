@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Stack, TextField, Typography } from '@mui/material';
-import { SearchButton } from '../components'
+import { HoverButton } from '../components'
 import { exerciseOptions, fetchData } from '../utils/fetchData';
 import HorizontalScrollbar from './HorizontalScrollbar';
 
@@ -51,9 +51,9 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
           type="text"
         />
         <br />
-        <SearchButton onClick={handleSearch}>
+        <HoverButton onClick={handleSearch}>
           Search
-        </SearchButton>
+        </HoverButton>
       </Box>
 
       <Box sx={{ position: 'relative', width: '100%', p: '20px' }}>

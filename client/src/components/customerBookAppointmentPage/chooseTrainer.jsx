@@ -5,38 +5,23 @@ import React, { useContext, useState, useEffect } from "react";
 const ChooseTrainer = ({ onTrainerChange }) => {
   const { setTrainerName } = useContext(TrainerNameContext);
   const [trainerList, setTrainerList] = useState([]);
-  
-  /*const trainerList = [
-    // This is a dummy list of trainers. Replace it with a list of trainers from the database.
-    { name: "Olivia Bennett", id: 1 },
-    { name: "Ethan Walker", id: 2 },
-    { name: "Maya Rodriguez", id: 3 },
-    { name: "Jackson Harper", id: 4 },
-    { name: "Ava Thompson", id: 5 },
-    { name: "Liam Moore", id: 6 },
-    { name: "Sophia Hill", id: 7 },
-    { name: "Noah Clark", id: 8 },
-    { name: "Isabella Lewis", id: 9 },
-    { name: "Aiden Robinson", id: 10 },
-  ];*/
 
   useEffect(() => {
     const trainers = async () => {
-      try{
+      try {
         const response = await axios.get("http://localhost:4000/trainers");
         const options = response.data.map((trainer) => ({
           id: trainer._id,
           value: trainer.firstName
         }));
         setTrainerList(options);
-        
-      }catch(error){
+
+      } catch (error) {
         console.error("Error fetching trainers:", error);
       }
     };
     trainers();
   }, []);
-
 
   const handleTrainerChange = (event) => {
     const selectedTrainerName = event.target.value;
