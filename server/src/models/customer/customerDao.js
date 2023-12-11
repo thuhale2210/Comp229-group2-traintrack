@@ -251,6 +251,49 @@ class CustomerDao{
             return res.status(500).json({ message: 'Error fetching user profile', error: error.message });
         }
     }
+
+    async updateProfile(req, res){
+        const customerId = req.params.id;
+        const updates = req.body; // Assuming the request body contains the fields to update
+    
+        try {
+            const customer = await Customer.findById(customerId);
+        
+            if (!customer) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+    
+            // Update the fields if they exist in the request body
+            if ('firstName' in updates) {
+                customer.firstName = updates.firstName;
+            }
+            if ('lastName' in updates) {
+                customer.lastName = updates.lastName;
+            }
+            if ('age' in updates) {
+                customer.age = updates.age;
+            }
+            if ('email' in updates) {
+                customer.email = updates.email;
+            }
+            if ('phone' in updates) {
+                customer.phone = updates.phone;
+            }
+            if ('weight' in updates) {
+                customer.weight = updates.weight;
+            }
+            if ('height' in updates) {
+                customer.height = updates.height;
+            }
+    
+            await customer.save(); // Save the updated customer information
+    
+            return res.status(200).json({ message: 'User profile updated successfully' });
+        } catch(error){
+            return res.status(500).json({ message: 'Error updating user profile', error: error.message });
+        }
+    }
+    
     
 }
 

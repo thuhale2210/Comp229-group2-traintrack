@@ -18,16 +18,25 @@ const CustomerEditProfile = () => {
     useEffect(() => {
         // Fetch the ID from sessionStorage
         const customerId = sessionStorage.getItem('userId');
-
+    
         // Make an API call to get the name based on the ID
-        axios.get(`http://localhost:4000/customer/${customerId}/name`)
-            .then((response) => {
-                setName(response.data.name);
-            })
-            .catch((error) => {
-                console.error('Error fetching name:', error);
-            });
-    }, []);
+        axios.get(`http://localhost:4000/customer/${customerId}/profile`)
+          .then((response) => {
+            setName(response.data.fullName);
+            setGender(response.data.gender);
+            setAge(response.data.age);
+            setEmail(response.data.email);
+            setPhone(response.data.phone);
+            setWeight(response.data.weight);
+            setHeight(response.data.height);
+          })
+          .catch((error) => {
+            console.error('Error fetching name:', error);
+          });
+    
+        
+        
+      }, []);
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
@@ -40,27 +49,29 @@ const CustomerEditProfile = () => {
     };
 
     const handleSaveChanges = () => {
-        const formData = { name, gender, age, email, phone, weight, height }
-        const updatedFormData = {
-            name,
-            gender,
+        const customerId = sessionStorage.getItem('userId');
+    
+        const updatedProfile = {
+            firstName: name.split(' ')[0], // Assuming name format is "First Last"
+            lastName: name.split(' ')[1],
+            gender, // Assuming gender is already set in state
             age,
             email,
             phone,
             weight,
             height
         };
-        setName(name);
-        setGender(gender);
-        setAge(age);
-        setEmail(email);
-        setPhone(phone);
-        setWeight(weight);
-        setHeight(height);
-        console.log(formData)
-
-        window.location.href = '/profile';
-    }
+    
+        axios.put(`http://localhost:4000/customer/${customerId}/update`, updatedProfile)
+            .then((response) => {
+                console.log('Profile updated successfully:', response.data);
+                window.location.href = '/profile'; // Redirect to profile page after successful update
+            })
+            .catch((error) => {
+                console.error('Error updating profile:', error);
+                // Handle error state or display a message to the user
+            });
+    };
 
     const handleLogOut = () => {
         sessionStorage.clear();

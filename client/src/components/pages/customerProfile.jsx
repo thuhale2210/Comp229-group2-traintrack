@@ -38,25 +38,6 @@ const CustomerProfile = () => {
     
   }, []);
 
-  /*const handleFormSubmit = () => {
-    const formData = { name, age, email, phone, weight, height }
-    const updatedFormData = {
-      name,
-      age,
-      email,
-      phone,
-      weight,
-      height
-    };
-    setName(name);
-    setAge(age);
-    setEmail(email);
-    setPhone(phone);
-    setWeight(weight);
-    setHeight(height);
-    console.log(formData)
-  }*/
-
   const handleLogOut = () => {
     sessionStorage.clear();
     window.location.href = '/';
