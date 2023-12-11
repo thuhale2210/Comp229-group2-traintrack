@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { Button } from '../components';
 
+
+
 const SignIn = ({ signIn }) => {
+	const navigate = useNavigate();
+
+	// Function to check if user is already authenticated
+	const checkAuthentication = () => {
+		const userId = sessionStorage.getItem('userId');
+		return !!userId; // Returns true if userId exists in sessionStorage
+	};
+
+	// Redirect if user is already authenticated
+	useEffect(() => {
+		if (checkAuthentication()) {
+		navigate('/home');
+		}
+	}, [navigate]);
+
 	const formik = useFormik({
 		initialValues: {
 			email: '',
@@ -18,8 +35,6 @@ const SignIn = ({ signIn }) => {
 			email: yup.string().email('Email is invalid').required('Email is required'),
 		}),
 	});
-
-	const navigate = useNavigate();
 
 	const handleSignIn = () => {
 		//console.log(formik.values);

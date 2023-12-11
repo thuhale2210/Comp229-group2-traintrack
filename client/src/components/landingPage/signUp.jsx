@@ -2,7 +2,7 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { Button } from '../components';
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 
 const SignUp = ({ signIn }) => {
 	const [isRegistered, setIsRegistered] = useState(false);

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useState, useRef, useEffect } from "react";
 import { Route, Routes, useLocation } from 'react-router-dom';
 import './App.css';
 import LandingPage from './components/pages/landingPage';
@@ -12,6 +12,13 @@ import CustomerEditProfile from './components/pages/customerEditProfile';
 
 function App() {
   const location = useLocation();
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check authentication status (retrieve from sessionStorage or localStorage)
+    const userId = sessionStorage.getItem('userId');
+    setAuthenticated(!!userId);
+  }, []);
 
   useEffect(() => {
     // Check the current route and apply styles accordingly
