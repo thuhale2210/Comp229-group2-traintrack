@@ -59,4 +59,8 @@ router.route('/customer/:id/workoutHistory').get((req, res) => {
     customerController.getWorkoutHistory(req, res);
 });
 
+router.route('/customer/:id/profile').get((req, res) => {
+    customerController.getProfileInformation(req, res);
+})
+
 module.exports = router;

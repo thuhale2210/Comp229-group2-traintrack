@@ -20,6 +20,10 @@ class CustomerController{
     getWorkoutHistory(req, res){
         this.customerService.getWorkoutHistory(req, res);
     }
+
+    getProfileInformation(req, res){
+        this.customerService.getProfile(req, res);
+    }
 }
 
 module.exports = CustomerController;

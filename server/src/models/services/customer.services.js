@@ -22,6 +22,10 @@ class CustomerService{
         this.customerDao.findWorkoutHistory(req, res);
     }
 
+    async getProfile(req, res){
+        this.customerDao.findProfile(req, res);
+    }
+
 
 }
 

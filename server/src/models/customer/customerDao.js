@@ -222,6 +222,36 @@ class CustomerDao{
             res.status(500).json({ error: 'Failed to fetch appointments' });
         }
     }
+
+    async findProfile(req, res){
+        const customerId = req.params.id;
+        try {
+            const customer = await Customer.findById(customerId);
+        
+            if (!customer) {
+                return res.status(404).json({ message: 'User not found' });
+            }
+        
+            const { firstName, lastName, gender, age, email, phone, weight, height } = customer;
+    
+            const fullName = `${firstName} ${lastName}`;
+    
+            const profileData = {
+                fullName,
+                gender,
+                age,
+                email,
+                phone,
+                weight,
+                height
+            };
+        
+            return res.status(200).json(profileData);
+        } catch (error) {
+            return res.status(500).json({ message: 'Error fetching user profile', error: error.message });
+        }
+    }
+    
 }
 
 module.exports = CustomerDao;

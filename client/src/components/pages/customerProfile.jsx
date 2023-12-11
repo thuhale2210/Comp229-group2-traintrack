@@ -6,12 +6,13 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 const CustomerProfile = () => {
-  const [name, setName] = useState("")
-  const [age, setAge] = useState()
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState("")
-  const [weight, setWeight] = useState("")
-  const [height, setHeight] = useState("")
+  const [name, setName] = useState("");
+  const [gender, setGender] = useState("");
+  const [age, setAge] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState("");
   const [uploadedImage, setUploadedImage] = useState("");
 
   useEffect(() => {
@@ -19,16 +20,25 @@ const CustomerProfile = () => {
     const customerId = sessionStorage.getItem('userId');
 
     // Make an API call to get the name based on the ID
-    axios.get(`http://localhost:4000/customer/${customerId}/name`)
+    axios.get(`http://localhost:4000/customer/${customerId}/profile`)
       .then((response) => {
-        setName(response.data.name);
+        setName(response.data.fullName);
+        setGender(response.data.gender);
+        setAge(response.data.age);
+        setEmail(response.data.email);
+        setPhone(response.data.phone);
+        setWeight(response.data.weight);
+        setHeight(response.data.height);
       })
       .catch((error) => {
         console.error('Error fetching name:', error);
       });
+
+    
+    
   }, []);
 
-  const handleFormSubmit = () => {
+  /*const handleFormSubmit = () => {
     const formData = { name, age, email, phone, weight, height }
     const updatedFormData = {
       name,
@@ -45,7 +55,7 @@ const CustomerProfile = () => {
     setWeight(weight);
     setHeight(height);
     console.log(formData)
-  }
+  }*/
 
   const handleLogOut = () => {
     sessionStorage.clear();
@@ -79,27 +89,27 @@ const CustomerProfile = () => {
                   </tr>
                   <tr className="border-b">
                     <td className="py-4 px-2 font-bold text-left w-1/3">Gender</td>
-                    <td className="py-4 px-2 text-left w-2/3">To be updated</td>
+                    <td className="py-4 px-2 text-left w-2/3">{gender}</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-4 px-2 font-bold text-left w-1/3">Age</td>
-                    <td className="py-4 px-2 text-left w-2/3">To be updated</td>
+                    <td className="py-4 px-2 text-left w-2/3">{age}</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-4 px-2 font-bold text-left w-1/3">Email</td>
-                    <td className="py-4 px-2 text-left w-2/3">To be updated</td>
+                    <td className="py-4 px-2 text-left w-2/3">{email}</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-4 px-2 font-bold text-left w-1/3">Phone Number</td>
-                    <td className="py-4 px-2 text-left w-2/3">To be updated</td>
+                    <td className="py-4 px-2 text-left w-2/3">{phone}</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-4 px-2 font-bold text-left w-1/3">Weight</td>
-                    <td className="py-4 px-2 text-left w-2/3">To be updated</td>
+                    <td className="py-4 px-2 text-left w-2/3">{weight}</td>
                   </tr>
                   <tr className="border-b">
                     <td className="py-4 px-2 font-bold text-left w-1/3">Height</td>
-                    <td className="py-4 px-2 text-left w-2/3">To be updated</td>
+                    <td className="py-4 px-2 text-left w-2/3">{height}</td>
                   </tr>
                 </tbody>
               </table>
