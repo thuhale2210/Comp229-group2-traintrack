@@ -10,7 +10,7 @@ const AppointmentPage = () => {
   const [upcomingAppointments, setUpcomingAppointments] = useState([]);
   const [workoutHistory, setWorkoutHistory] = useState([]);
 
-  useEffect(() => {
+  const fetchAppointments = () => {
     // Fetch upcoming appointments
     axios.get(`http://localhost:4000/customer/${customerId}/upcomingSchedule`)
       .then(response => {
@@ -20,6 +20,11 @@ const AppointmentPage = () => {
       .catch(error => {
         console.error('Error fetching upcoming appointments:', error);
       });
+  }
+
+  useEffect(() => {
+    
+    fetchAppointments();
 
     // Fetch workout history
     axios.get(`http://localhost:4000/customer/${customerId}/workoutHistory`)
@@ -30,7 +35,7 @@ const AppointmentPage = () => {
       .catch(error => {
         console.error('Error fetching workout history:', error);
       });
-  }, [customerId]); // Fetch data when customerId changes
+  }, []); // Fetch data when customerId changes
   // Mock data for testing
   /*const upcomingAppointments = [
     {
@@ -93,7 +98,7 @@ const AppointmentPage = () => {
         <div className="mt-5">
           <p className='text-base font-bold py-5 text-left ml-10'>Upcoming Schedule</p>
           <div className="mx-20 rounded-xl bg-white shadow-md">
-            <UpcomingSchedule upcomingAppointments={upcomingAppointments} />
+            <UpcomingSchedule upcomingAppointments={upcomingAppointments} setUpcomingAppointments={fetchAppointments} />
           </div>
         </div>
         <div className="mt-5">

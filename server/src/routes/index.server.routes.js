@@ -61,10 +61,14 @@ router.route('/customer/:id/workoutHistory').get((req, res) => {
 
 router.route('/customer/:id/profile').get((req, res) => {
     customerController.getProfileInformation(req, res);
-})
+});
 
 router.route('/customer/:id/update').put((req, res) => {
     customerDao.updateProfile(req, res);
-})
+});
+
+router.route('/customer/:id/cancel/:appId').delete((req, res) => {
+    customerDao.deleteAppointment(req, res);
+});
 
 module.exports = router;

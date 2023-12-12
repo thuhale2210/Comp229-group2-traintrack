@@ -136,6 +136,7 @@ class CustomerDao{
         try {
             // Fetch all customers from the database
             const allCustomers = await Customer.find();
+            console.log('It is working');
     
             // Respond with the retrieved customers
             res.status(200).json(allCustomers);
@@ -168,6 +169,7 @@ class CustomerDao{
                 const duration = Math.round((end - start) / (1000 * 60)); // Calculate duration in minutes
 
                 return {
+                    id: appointment._id,
                     date: start.toLocaleDateString('en-US'),
                     time: start.toLocaleTimeString('en-US', { timeStyle: 'short' }),
                     focusArea: appointment.focusArea,
@@ -294,7 +296,41 @@ class CustomerDao{
         }
     }
     
-    
+    async deleteAppointment(req, res){
+        console.log('It is working');
+        const customerId = req.params.id;
+        const appointmentId = req.params.appId;
+        console.log(customerId);
+        console.log(appointmentId);
+
+        try {
+            // Find the customer by ID
+            const customer = await Customer.findById(customerId);
+
+            if (!customer) {
+                return res.status(404).json({ message: "Customer not found" });
+            }
+
+            // Find the index of the appointment to delete
+            const appointmentIndex = customer.appointments.findIndex(
+                (apt) => apt._id.toString() === appointmentId
+            );
+
+            if (appointmentIndex === -1) {
+                return res.status(404).json({ message: "Appointment not found" });
+            }
+
+            // Remove the appointment from the appointments array
+            customer.appointments.splice(appointmentIndex, 1);
+
+            // Save the updated customer data
+            await customer.save();
+
+            return res.status(200).json({ message: "Appointment deleted successfully" });
+        } catch (err) {
+            return res.status(500).json({ message: err.message });
+        }
+    }
 }
 
 module.exports = CustomerDao;
