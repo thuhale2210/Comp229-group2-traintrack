@@ -5,8 +5,6 @@ import { useFormik } from 'formik';
 import axios from 'axios';
 import { Button } from '../components';
 
-
-
 const SignIn = ({ signIn }) => {
 	const navigate = useNavigate();
 
@@ -19,7 +17,7 @@ const SignIn = ({ signIn }) => {
 	// Redirect if user is already authenticated
 	useEffect(() => {
 		if (checkAuthentication()) {
-		navigate('/home');
+			navigate('/home');
 		}
 	}, [navigate]);
 
@@ -37,8 +35,6 @@ const SignIn = ({ signIn }) => {
 	});
 
 	const handleSignIn = () => {
-		//console.log(formik.values);
-        
 		axios
 			.post('http://localhost:4000/login', formik.values)
 			.then((res) => {
@@ -51,9 +47,8 @@ const SignIn = ({ signIn }) => {
 
 	return (
 		<div
-			className={`absolute top-0 h-full transition-all duration-600 left-0 w-1/2 z-2 ${
-				!signIn ? 'transform translate-x-100' : ''
-			}`}
+			className={`absolute top-0 h-full transition-all duration-600 left-0 w-1/2 z-2 ${!signIn ? 'transform translate-x-100' : ''
+				}`}
 		>
 			<form
 				className="bg-white flex items-center justify-center flex-col px-10 h-full text-center"

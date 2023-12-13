@@ -37,10 +37,6 @@ const AppointmentDetails = ({ chosenDateTime, onChangeAppointment, trainerName }
             console.error('Error confirming appointment:', error);
             // Optionally handle errors with an alert or other UI feedback
         });
-
-        //handleOpen();
-        //window.location.href = '/appointment';
-        //window.alert('Appointment confirmed!');
     };
 
     return (

@@ -18,25 +18,25 @@ const CustomerEditProfile = () => {
     useEffect(() => {
         // Fetch the ID from sessionStorage
         const customerId = sessionStorage.getItem('userId');
-    
+
         // Make an API call to get the name based on the ID
         axios.get(`http://localhost:4000/customer/${customerId}/profile`)
-          .then((response) => {
-            setName(response.data.fullName);
-            setGender(response.data.gender);
-            setAge(response.data.age);
-            setEmail(response.data.email);
-            setPhone(response.data.phone);
-            setWeight(response.data.weight);
-            setHeight(response.data.height);
-          })
-          .catch((error) => {
-            console.error('Error fetching name:', error);
-          });
-    
-        
-        
-      }, []);
+            .then((response) => {
+                setName(response.data.fullName);
+                setGender(response.data.gender);
+                setAge(response.data.age);
+                setEmail(response.data.email);
+                setPhone(response.data.phone);
+                setWeight(response.data.weight);
+                setHeight(response.data.height);
+            })
+            .catch((error) => {
+                console.error('Error fetching name:', error);
+            });
+
+
+
+    }, []);
 
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
@@ -50,7 +50,7 @@ const CustomerEditProfile = () => {
 
     const handleSaveChanges = () => {
         const customerId = sessionStorage.getItem('userId');
-    
+
         const updatedProfile = {
             firstName: name.split(' ')[0], // Assuming name format is "First Last"
             lastName: name.split(' ')[1],
@@ -61,7 +61,7 @@ const CustomerEditProfile = () => {
             weight,
             height
         };
-    
+
         axios.put(`http://localhost:4000/customer/${customerId}/update`, updatedProfile)
             .then((response) => {
                 console.log('Profile updated successfully:', response.data);
@@ -120,24 +120,6 @@ const CustomerEditProfile = () => {
                                             />
                                         </td>
                                     </tr>
-                                    {/* <tr className="border-b">
-                                        <td className="py-2 px-2 font-bold text-left w-1/3">Gender</td>
-                                        <td className="py-2 px-2 text-left w-2/3">
-                                            <div className="relative h-15 min-w-[200px] mt-3">
-                                                <select
-                                                    onChange={e => setGender(e.target.value)}
-                                                    className="peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-base font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-red-500 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                                                >
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
-                                                </select>
-                                                <label
-                                                    className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-base peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
-                                                >
-                                                </label>
-                                            </div>
-                                        </td>
-                                    </tr> */}
                                     <tr className="border-b">
                                         <td className="py-2 px-2 font-bold text-left w-1/3">Age</td>
                                         <td className="py-2 px-2 text-left w-2/3">
