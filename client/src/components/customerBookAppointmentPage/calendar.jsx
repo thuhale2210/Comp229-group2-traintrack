@@ -45,7 +45,7 @@ const Calendar = () => {
             // Reset the selected slot and chosen date time
             setChosenDateTime(null);
             setSelectedSlot(null);
-            window.alert('You cannot book an appointment in the past!');
+            window.alert('You cannot book an appointment in the past');
             setSlotSelectionEnabled(true);
         }
     };
@@ -54,42 +54,42 @@ const Calendar = () => {
     const handleChangeAppointment = () => {
         setSelectedSlot(null);
         setChosenDateTime(null);
-        window.location.reload();
+        window.location.reload(false);
     };
 
     // Check if user changes the trainer
     const handleTrainerChange = () => {
         if (trainerName) {
-            window.location.reload();
+            window.location.reload(false);
         }
     }
 
-        return (
-            <div>
-                <BigCalendar
-                    localizer={localizer}
-                    events={events}
-                    startAccessor="start"
-                    endAccessor="end"
-                    onSelectSlot={handleSelectSlot}
-                    selectable
-                    min={new Date(moment().set({ hour: 6, minute: 0, second: 0, millisecond: 0 }))}
-                    max={new Date(moment().set({ hour: 23, minute: 0, second: 0, millisecond: 0 }))}
-                    defaultView="week"
-                    views={['week']}
-                />
-                {chosenDateTime && (
-                    <div className='mt-3'>
-                        <AppointmentDetails
-                            chosenDateTime={chosenDateTime}
-                            onChangeAppointment={handleChangeAppointment}
-                            trainerName={trainerName}
-                            onChangeTrainer={handleTrainerChange}
-                        />
-                    </div>
-                )}
-            </div>
-        );
-    };
+    return (
+        <div>
+            <BigCalendar
+                localizer={localizer}
+                events={events}
+                startAccessor="start"
+                endAccessor="end"
+                onSelectSlot={handleSelectSlot}
+                selectable
+                min={new Date(moment().set({ hour: 6, minute: 0, second: 0, millisecond: 0 }))}
+                max={new Date(moment().set({ hour: 23, minute: 0, second: 0, millisecond: 0 }))}
+                defaultView="week"
+                views={['week']}
+            />
+            {chosenDateTime && (
+                <div className='mt-3'>
+                    <AppointmentDetails
+                        chosenDateTime={chosenDateTime}
+                        onChangeAppointment={handleChangeAppointment}
+                        trainerName={trainerName}
+                        onChangeTrainer={handleTrainerChange}
+                    />
+                </div>
+            )}
+        </div>
+    );
+};
 
-    export default Calendar;
+export default Calendar;

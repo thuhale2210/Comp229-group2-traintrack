@@ -6,6 +6,7 @@ const UpcomingSchedule = ({ upcomingAppointments, setUpcomingAppointments }) => 
   async function cancelAppointment(customerId, appointmentId) {
     try {
       const response = await axios.delete(`http://localhost:4000/customer/${customerId}/cancel/${appointmentId}`);
+      window.location.reload(false);
       
       if (response.status === 200) {
         console.log('Appointment canceled successfully');

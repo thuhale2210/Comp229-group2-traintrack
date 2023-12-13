@@ -10,7 +10,7 @@ const CustomerHomePage = () => {
       <NavBar />
       <div className='h-screen relative'>
         <img src={HomeHeroBannerImage} alt="hero-banner" className="w-screen h-full object-cover" />
-        <div className='flex flex-col items-start text-md-right absolute top-1/2 left-0 ml-10'>
+        <div className='flex flex-col items-start text-left absolute top-1/2 left-0 ml-10'>
           <p className="font-bold text-primary-white text-[70px] my-3 leading-snug">
             READY TO GET FIT?
           </p>
@@ -24,6 +24,7 @@ const CustomerHomePage = () => {
           </div>
         </div>
       </div>
+
     </>
   )
 }
